@@ -174,13 +174,72 @@
     .select-all-pill img{width:21px;height:21px}
     .custom-sheet .slider-limits{padding:0 6px;margin-top:1px}
     .custom-sheet .primary{height:52px;margin-top:16px;background:var(--control);color:#111}
+    .viewer-shell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;--device-scale:1}
+    .variant-toggle{width:min(calc(100vw - 16px),375px);height:44px;padding:2px;border-radius:13px;background:#e8e8e8;display:grid;grid-template-columns:1fr 1fr;flex:none}
+    .variant-button{border:0;border-radius:11px;background:transparent;font-size:14px;line-height:18px;cursor:pointer}
+    .variant-button.active{background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.14);font-weight:600}
+    .phone .device-wrap{width:calc(375px * var(--device-scale));height:calc(812px * var(--device-scale))}
+    .phone .device{inset:auto;left:0;top:0;width:375px;height:812px;display:flex;flex-direction:column;overflow:hidden;transform:scale(var(--device-scale));transform-origin:0 0}
+    .phone .app{width:375px;height:734px;max-height:none}
+    .system-status{height:44px;display:flex;padding:0;overflow:hidden}
+    .system-status img{display:block;width:375px;height:44px;object-fit:cover}
+    .system-home{height:34px;display:flex;align-items:center;justify-content:center}
+    .system-home::after{content:"";width:134px;height:5px;border-radius:5px;background:#111}
+    .prototype-stage{height:734px;flex:none}
+    .desktop .system-status{padding:0}
+    .desktop .system-home{display:flex}
+    .hero{height:310px}
+    .metrics.metrics-data{grid-template-columns:1fr 1fr 80px}
+    .metrics-data .metric{padding:10px;height:80px}
+    .metrics-data .metric strong{display:flex;align-items:center;gap:5px;font-size:18px}
+    .metrics-data .metric strong img{width:20px;height:20px}
+    .metrics-data .metric span{font-size:12px;line-height:15px}
+    .metric-action{border:0;cursor:pointer;text-align:left}
+    .metric-action img{display:block;width:15px;height:15px;margin-bottom:8px}
+    .auto-arrow{width:32px;height:32px;margin-left:auto;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
+    .auto-arrow img{width:20px;height:20px}
+    .product{transition:opacity .22s ease,transform .22s ease,max-height .22s ease,min-height .22s ease,padding .22s ease}
+    .product.removing{opacity:0;transform:translateX(18px)}
+    .calculator{padding:0 10px 14px;overflow:hidden}
+    .calculator-status{height:28px;margin:0 -10px 10px;display:flex;align-items:center;justify-content:center;background:#ececec;font-size:12px;line-height:16px;color:#5c5c5c}
+    .calculator-status.ai{background:linear-gradient(90deg,#ffe3ee,#e7dcff);color:#5b2c67}
+    .calculator-status.great{background:#dcf8d0;color:#346221}
+    .options{padding:0 1px}
+    .choice-chip{min-width:max-content}
+    .choice-chip.ai-choice::before{content:"✦";margin-right:4px;color:#7b48d8}
+    .sheet.auto-sheet{height:642px;max-height:calc(100% - 20px)}
+    .auto-sheet>.result-card{margin-top:24px}
+    .auto-sheet .details-link{display:inline-block;margin-top:8px;color:#111;text-decoration:underline;text-underline-offset:2px}
+    .sheet.metrics-sheet{height:642px;padding-top:38px;overflow-y:auto}
+    .metrics-summary{margin-top:20px;border-radius:20px;padding:20px 16px 16px;background:linear-gradient(145deg,#f8ddff,#e7f0ff)}
+    .metrics-summary>strong{font-size:32px;line-height:36px;display:block;margin-bottom:4px}
+    .metrics-summary>p{font-size:14px;line-height:18px;margin-bottom:16px}
+    .metrics-growth{background:#fff;border-radius:14px;padding:12px;display:grid;gap:10px}
+    .growth-row{display:flex;align-items:center;gap:8px}
+    .growth-row img{width:20px;height:20px}
+    .growth-row strong{font-size:16px;line-height:20px;min-width:48px}
+    .growth-row span{font-size:13px;line-height:16px;color:var(--secondary)}
+    .metrics-explanation{margin-top:24px}
+    .metrics-explanation h3{font-size:20px;line-height:24px;margin:0 0 14px}
+    .metrics-step{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;margin:0 0 12px}
+    .metrics-step-visual{width:48px;height:48px;border-radius:14px;background:var(--control)}
+    .metrics-step p{font-size:14px;line-height:18px}
+    .sheet.custom-sheet{height:248px;border-radius:24px 24px 0 0;padding:16px 10px 14px}
+    .manual-input-wrap{height:48px;border-radius:14px;background:var(--control);display:flex;align-items:center;padding:0 12px;margin-bottom:18px}
+    .amount-input{position:static;width:100%;height:100%;opacity:1;border:0;background:transparent;font-size:20px;line-height:24px;font-weight:700;outline:0}
+    .amount-input::-webkit-inner-spin-button{display:none}
+    .clear-amount{width:28px;height:28px;border:0;border-radius:50%;background:#d5d5d5;display:grid;place-items:center;font-size:18px;cursor:pointer}
+    .custom-sheet .slider{width:calc(100% - 12px)}
+    .custom-sheet .primary{background:#111;color:#fff;margin-top:18px}
+    .custom-value{display:none}
+    @media (max-height:680px){.variant-toggle{height:38px}.viewer-shell{gap:6px}}
     @media (min-width:376px){.phone .app{box-shadow:none}}
     @media (max-width:560px){
       .boot,.viewer-choice{padding:0;background:#fff}
       .boot-card,.viewer-choice-card{width:100%;min-height:100%;border-radius:0;padding:28px 20px;box-shadow:none;display:flex;flex-direction:column;justify-content:center}
       .viewer-choice-card h1{font-size:28px;line-height:32px}
       .viewer-options{grid-template-columns:1fr;gap:10px}
-      .viewer-option{min-height:112px;display:grid;grid-template-columns:76px 1fr;grid-template-rows:auto auto;column-gap:12px;align-content:center}
+      .viewer-option{min-height:112px;display:grid;grid-template-columns:96px 1fr;grid-template-rows:auto auto;column-gap:12px;align-content:center}
       .viewer-option-preview{grid-row:1/3;margin:0}
       .viewer-option strong{align-self:end}
       .viewer-option span{align-self:start}
@@ -215,9 +274,13 @@
     </div>
   </section>
   <div class="viewer-shell" id="viewerShell" hidden inert aria-hidden="true">
+    <div class="variant-toggle" id="variantToggle" aria-label="Вариант прототипа">
+      <button class="variant-button active" data-metrics="false">Без метрик</button>
+      <button class="variant-button" data-metrics="true">С метриками</button>
+    </div>
     <div class="device-wrap">
       <div class="device">
-        <div class="system-status" aria-hidden="true"><span>9:41</span><span class="system-status-right">5G&nbsp;&nbsp;100%</span></div>
+        <div class="system-status" aria-hidden="true"><img src="./assets/status-bar.png" alt=""></div>
         <div class="prototype-stage">
   <main class="app" id="app">
     <header class="sticky-header" id="stickyHeader">
@@ -230,11 +293,8 @@
         <button class="back" aria-label="Назад"><img src="./assets/icon3.svg" alt=""></button>
         <div class="hero-copy"><h1>Скидка<br>на доставку</h1><p>Чтобы сделать товары привлекательнее</p></div>
         <div class="art-viewport" aria-hidden="true"><div class="art"><img class="art-shadow-main" src="./assets/ellipse3438.svg"><img class="art-shadow-plant-large" src="./assets/ellipse29603.svg"><img class="art-shadow-plant-small" src="./assets/ellipse29604.svg"><img class="van" src="./assets/van-cat-green.png"><img class="plant" src="./assets/plant-box.png"><img class="bag" src="./assets/shopping-bag.png"><div class="promo-badge"><img src="./assets/promo-badge.svg"></div></div></div>
-        <div class="metrics">
-          <div class="metric"><strong>x2,5</strong><span>Растет скорость продажи</span></div>
-          <div class="metric"><strong>x3</strong><span>Растёт количество покупателей</span><button class="help" data-sheet="info" aria-label="Подробнее"><img src="./assets/help.svg" alt=""></button></div>
-        </div>
-        <div class="auto-row"><button class="switch" id="autoSwitch" role="switch" aria-checked="false"><img src="./assets/switch-inactive.svg" alt=""></button><span>Включать на новые товары</span><button class="help" data-sheet="auto" aria-label="Настроить"><img src="./assets/help1.svg" alt=""></button></div>
+        <div class="metrics" id="heroMetrics"></div>
+        <div class="auto-row"><button class="switch" id="autoSwitch" role="switch" aria-checked="false"><img src="./assets/switch-inactive.svg" alt=""></button><span>Включать на новые товары</span><button class="auto-arrow" data-sheet="auto" aria-label="Настроить"><img src="./assets/arrow-forward.svg" alt=""></button></div>
       </section>
       <nav class="tabs"><button class="tab active" data-tab="eligible">Подходят<small>40</small></button><button class="tab" data-tab="discounted">Со скидкой<small id="discountedCount">1</small></button></nav>
       <section class="catalog" id="catalog"></section>
@@ -244,7 +304,7 @@
     </section>
     <section class="selection" id="selection">
       <div class="count-pill"><button class="check active" id="clearSelection" aria-label="Снять выбор"><img src="./assets/checkbox-active.svg" alt=""></button><span id="selectionCount"></span></div>
-      <div class="calculator"><div class="options" id="selectionOptions"></div><button class="primary" id="applyDiscount">Применить</button><p class="caption">Считаем скидки индивидуально <button class="info-dot" data-sheet="info" aria-label="Подробнее"><img src="./assets/icon.svg" alt=""></button></p></div>
+      <div class="calculator"><div class="calculator-status" id="calculatorStatus"></div><div class="options" id="selectionOptions"></div><button class="primary" id="applyDiscount">Применить</button><p class="caption">Считаем скидки индивидуально <button class="info-dot" data-sheet="info" aria-label="Подробнее"><img src="./assets/icon.svg" alt=""></button></p></div>
     </section>
     <div class="backdrop" id="backdrop"><section class="sheet" id="sheet"></section></div>
     <div class="toast" id="toast"></div>
@@ -257,27 +317,44 @@
   <script>
     const categories=[
       {name:'Обувь',items:[
-        {id:'salomon',price:4150,title:'Кроссовки Salomon',image:'./assets/product-salomon.png'},
-        {id:'diesel',price:15000,title:'Ботинки Diesel',image:'./assets/product-diesel.png'}]},
+        {id:'salomon',price:1000,title:'Кроссовки Salomon',image:'./assets/product-salomon.png'},
+        {id:'diesel',price:5000,title:'Ботинки Diesel',image:'./assets/product-diesel.png'}]},
       {name:'Постельное бельё',items:[
-        {id:'turquoise',price:4500,title:'Постельное бельё ИКЕА Бирюза',image:'./assets/product-bedding-turquoise.png'},
-        {id:'ocean',price:4300,title:'Постельное бельё ИКЕА Океан',image:'./assets/image1.png'},
-        {id:'rose',price:3400,title:'Постельное бельё ИКЕА Роза',image:'./assets/product-bedding-ocean.png'},
-        {id:'carrots',price:3800,title:'Постельное бельё ИКЕА Морковки',image:'./assets/product-bedding-carrots.png'}]},
+        {id:'turquoise',price:2000,title:'Постельное бельё ИКЕА Бирюза',image:'./assets/image1.png'},
+        {id:'ocean',price:3000,title:'Постельное бельё ИКЕА Океан',image:'./assets/product-bedding-turquoise.png'},
+        {id:'rose',price:5000,title:'Постельное бельё ИКЕА Роза',image:'./assets/product-bedding-ocean.png'},
+        {id:'carrots',price:2000,title:'Постельное бельё ИКЕА Морковки',image:'./assets/product-bedding-carrots.png'}]},
       {name:'Светильники',items:[
         {id:'lamp-round',price:1000,title:'Светильник круглый',image:'./assets/product-lamp-round.png'},
         {id:'lamp-kitchen',price:3000,title:'Светильник для кухни',image:'./assets/product-lamp-kitchen.png'},
         {id:'lamp-tall',price:4000,title:'Светильник высокий туба',image:'./assets/product-lamp-tall.png'}]}
     ];
-    const oakley={id:'oakley',price:3900,title:'Кроссовки Oakley',image:'./assets/product-oakley.png'};
+    const oakley={id:'oakley',price:3000,title:'Кроссовки Oakley',image:'./assets/product-oakley.png'};
     const allItems=categories.flatMap(category=>category.items);
-    const state={tab:'eligible',selected:new Set(),applied:new Map([[oakley.id,546]]),multiMode:'minimum',singleMode:'optimal',singleValue:null,auto:false,autoMode:'minimum',priceBand:0};
-    const rubles=value=>`${new Intl.NumberFormat('ru-RU').format(value)} ₽`;
-    const rates=price=>price<=1000?[18,20]:price<=3000?[16,18]:price<=6000?[14,16]:price<=10000?[12,14]:price<=20000?[10,12]:null;
-    const discount=(price,mode)=>{const pair=rates(price);return pair?Math.ceil(price*pair[mode==='minimum'?0:1]/100):0};
-    const selectedItems=()=>allItems.filter(item=>state.selected.has(item.id));
+    const state={tab:'eligible',selected:new Set(),applied:new Map([[oakley.id,300]]),selectionLevel:'ai',manualRatio:null,auto:false,priceBand:0,metrics:false};
+    const rubles=value=>new Intl.NumberFormat('ru-RU').format(value)+' ₽';
+    const roundHundred=value=>Math.round(value/100)*100;
+    const minimumDiscount=price=>roundHundred(price*.1);
+    const discount=(price,level)=>{
+      const minimum=minimumDiscount(price);
+      if(level==='minimum')return minimum;
+      const ai=Math.max(minimum+100,roundHundred(price*.15));
+      if(level==='ai')return ai;
+      const great=Math.max(ai+100,roundHundred(price*.2));
+      if(level==='great')return great;
+      return Math.max(great+100,Math.floor(price*.25/100)*100);
+    };
+    const maximumDiscount=price=>minimumDiscount(price)*5;
+    const eligibleItems=()=>allItems.filter(item=>!state.applied.has(item.id));
+    const selectedItems=()=>eligibleItems().filter(item=>state.selected.has(item.id));
     const productWord=count=>count%10===1&&count%100!==11?'товар':count%10>=2&&count%10<=4&&(count%100<12||count%100>14)?'товара':'товаров';
-    const rangeLabel=(items,mode)=>{const values=items.map(item=>discount(item.price,mode));return values.length?`${rubles(Math.min(...values)).replace(' ₽','')}–${rubles(Math.max(...values))}`:'0 ₽'};
+    const rangeLabel=(items,level)=>{
+      const values=items.map(item=>discount(item.price,level));
+      if(!values.length)return '0 ₽';
+      const minimum=Math.min(...values);
+      const maximum=Math.max(...values);
+      return minimum===maximum?rubles(minimum):rubles(minimum).replace(' ₽','')+'–'+rubles(maximum);
+    };
     const catalog=document.getElementById('catalog');
     const app=document.getElementById('app');
     const scroll=document.getElementById('scroll');
@@ -286,6 +363,7 @@
     const selection=document.getElementById('selection');
     const selectionCount=document.getElementById('selectionCount');
     const selectionOptions=document.getElementById('selectionOptions');
+    const calculatorStatus=document.getElementById('calculatorStatus');
     const discountedCount=document.getElementById('discountedCount');
     const backdrop=document.getElementById('backdrop');
     const sheet=document.getElementById('sheet');
@@ -297,16 +375,20 @@
     const bootRetry=document.getElementById('bootRetry');
     const viewerChoice=document.getElementById('viewerChoice');
     const viewerShell=document.getElementById('viewerShell');
+    const variantToggle=document.getElementById('variantToggle');
+    const heroMetrics=document.getElementById('heroMetrics');
     const imageAssets=[
-      './assets/checkbox-active.svg','./assets/checkbox-inactive.svg','./assets/close.svg',
-      './assets/ellipse29603.svg','./assets/ellipse29604.svg','./assets/ellipse3438.svg',
-      './assets/help.svg','./assets/help1.svg','./assets/icon.svg','./assets/icon2.svg',
-      './assets/icon3.svg','./assets/icon4.svg','./assets/image1.png','./assets/plant-box.png',
-      './assets/product-bedding-carrots.png','./assets/product-bedding-ocean.png',
-      './assets/product-bedding-turquoise.png','./assets/product-diesel.png',
-      './assets/product-lamp-kitchen.png','./assets/product-lamp-round.png',
-      './assets/product-lamp-tall.png','./assets/product-oakley.png','./assets/product-salomon.png',
-      './assets/promo-badge.svg','./assets/shopping-bag.png','./assets/switch-active.svg',
+      './assets/arrow-forward.svg','./assets/checkbox-active.svg','./assets/checkbox-inactive.svg',
+      './assets/close.svg','./assets/ellipse29603.svg','./assets/ellipse29604.svg',
+      './assets/ellipse3438.svg','./assets/help.svg','./assets/help1.svg','./assets/icon.svg',
+      './assets/icon2.svg','./assets/icon3.svg','./assets/icon4.svg','./assets/image1.png',
+      './assets/metrics-action.png','./assets/metrics-eye.png','./assets/metrics-heart.png',
+      './assets/plant-box.png','./assets/product-bedding-carrots.png',
+      './assets/product-bedding-ocean.png','./assets/product-bedding-turquoise.png',
+      './assets/product-diesel.png','./assets/product-lamp-kitchen.png',
+      './assets/product-lamp-round.png','./assets/product-lamp-tall.png',
+      './assets/product-oakley.png','./assets/product-salomon.png','./assets/promo-badge.svg',
+      './assets/shopping-bag.png','./assets/status-bar.png','./assets/switch-active.svg',
       './assets/switch-inactive.svg','./assets/van-cat-green.png'
     ];
     const fontAssets=[
@@ -319,38 +401,66 @@
     const preparedResources=new Set();
     const warmedImages=[];
 
-    function checkButton(active,label){return `<button class="check ${active?'active':''}" aria-label="${label}"><img src="./assets/checkbox-${active?'active':'inactive'}.svg" alt=""></button>`}
+    function checkButton(active,label){
+      return '<button class="check '+(active?'active':'')+'" aria-label="'+label+'"><img src="./assets/checkbox-'+(active?'active':'inactive')+'.svg" alt=""></button>';
+    }
 
     function selectedDiscount(item){
-      const items=selectedItems();
       if(!state.selected.has(item.id))return null;
-      if(items.length>1)return discount(item.price,state.multiMode);
-      if(state.singleMode==='optimal')return discount(item.price,'optimal');
-      if(state.singleMode==='custom')return state.singleValue;
-      return Math.min(item.price,Number(state.singleMode));
+      if(state.manualRatio!==null){
+        const value=roundHundred(item.price*state.manualRatio);
+        return Math.min(maximumDiscount(item.price),Math.max(minimumDiscount(item.price),value));
+      }
+      return discount(item.price,state.selectionLevel);
     }
 
     function productMarkup(item,selected,applied){
       const badge=applied??selectedDiscount(item);
-      return `<article class="product" data-id="${item.id}"><img class="product-image" src="${item.image}" alt=""><span class="product-check">${checkButton(selected,selected?'Снять выбор':'Выбрать товар')}</span><div class="product-body"><div class="product-price">${rubles(item.price)}${badge?`<span class="discount-badge"><img src="./assets/icon2.svg" alt="">Скидка ${rubles(badge)}</span>`:''}</div><div class="product-title">${item.title}</div></div></article>`;
+      return '<article class="product" data-id="'+item.id+'"><img class="product-image" src="'+item.image+'" alt=""><span class="product-check">'+checkButton(selected,selected?'Снять выбор':'Выбрать товар')+'</span><div class="product-body"><div class="product-price">'+rubles(item.price)+(badge?'<span class="discount-badge"><img src="./assets/icon2.svg" alt="">Скидка '+rubles(badge)+'</span>':'')+'</div><div class="product-title">'+item.title+'</div></div></article>';
+    }
+
+    function discountedMarkup(){
+      return categories.map(category=>{
+        const items=category.name==='Обувь'
+          ?[oakley,...category.items.filter(item=>state.applied.has(item.id))]
+          :category.items.filter(item=>state.applied.has(item.id));
+        if(!items.length)return '';
+        return '<div class="category"><div class="category-title">'+category.name+'</div>'+items.map(item=>productMarkup(item,false,state.applied.get(item.id))).join('')+'</div>';
+      }).join('')||'<div class="empty">Здесь появятся товары со скидкой</div>';
     }
 
     function renderCatalog(){
       discountedCount.textContent=state.applied.size;
       document.querySelectorAll('.tab').forEach(tab=>tab.classList.toggle('active',tab.dataset.tab===state.tab));
       if(state.tab==='discounted'){
-        const items=[oakley,...allItems.filter(item=>state.applied.has(item.id))];
-        catalog.innerHTML=items.length?`<div class="category"><div class="category-title">Обувь</div>${items.map(item=>productMarkup(item,false,state.applied.get(item.id))).join('')}</div>`:'<div class="empty">Здесь появятся товары со скидкой</div>';
+        catalog.innerHTML=discountedMarkup();
         selection.classList.remove('visible');
         app.classList.remove('has-selection');
         selectAllFooter.classList.add('hidden');
         return;
       }
       catalog.innerHTML=categories.map(category=>{
-        const chosen=category.items.every(item=>state.selected.has(item.id));
-        return `<div class="category"><div class="category-title" data-category="${category.name}">${checkButton(chosen,chosen?'Снять выбор с категории':'Выбрать категорию')}<span>${category.name}</span></div>${category.items.map(item=>productMarkup(item,state.selected.has(item.id),state.applied.get(item.id))).join('')}</div>`;
+        const items=category.items.filter(item=>!state.applied.has(item.id));
+        if(!items.length)return '';
+        const chosen=items.every(item=>state.selected.has(item.id));
+        return '<div class="category"><div class="category-title" data-category="'+category.name+'">'+checkButton(chosen,chosen?'Снять выбор с категории':'Выбрать категорию')+'<span>'+category.name+'</span></div>'+items.map(item=>productMarkup(item,state.selected.has(item.id),null)).join('')+'</div>';
       }).join('');
       renderSelection();
+    }
+
+    function renderCalculatorStatus(){
+      calculatorStatus.className='calculator-status';
+      if(state.selectionLevel==='ai'&&state.manualRatio===null){
+        calculatorStatus.classList.add('ai');
+        calculatorStatus.textContent='Скидку рекомендует нейросеть ⓘ';
+        return;
+      }
+      if(state.selectionLevel==='minimum'&&state.manualRatio===null){
+        calculatorStatus.textContent='Нормальная скидка';
+        return;
+      }
+      calculatorStatus.classList.add('great');
+      calculatorStatus.textContent='Отличная скидка!';
     }
 
     function renderSelection(){
@@ -359,33 +469,47 @@
       app.classList.toggle('has-selection',items.length>0);
       selectAllFooter.classList.toggle('hidden',items.length>0||state.tab!=='eligible');
       if(!items.length)return;
-      selectionCount.textContent=`${items.length} ${productWord(items.length)}`;
-      if(items.length===1){
-        const item=items[0];
-        const optimal=discount(item.price,'optimal');
-        const choices=[
-          {key:'optimal',label:`Оптимальная · ${rubles(optimal)}`},
-          {key:'1000',label:'1 000 ₽'},
-          {key:'1500',label:'1 500 ₽'}];
-        selectionOptions.innerHTML=choices.map(choice=>`<button class="chip ${state.singleMode===choice.key?'active':''}" data-single="${choice.key}">${choice.label}</button>`).join('')+`<button class="chip edit-chip" data-sheet="custom" aria-label="Задать свою скидку"><img src="./assets/icon4.svg" alt=""></button>`;
-      }else{
-        selectionOptions.innerHTML=`<button class="chip range-choice ${state.multiMode==='minimum'?'active':''}" data-multi="minimum"><span>Минимальная</span><strong>${rangeLabel(items,'minimum')}</strong></button><button class="chip range-choice ${state.multiMode==='optimal'?'active':''}" data-multi="optimal"><span>Оптимальная</span><strong>${rangeLabel(items,'optimal')}</strong></button>`;
-      }
+      selectionCount.textContent=items.length+' '+productWord(items.length);
+      renderCalculatorStatus();
+      const levels=[
+        {key:'minimum',ai:false},
+        {key:'ai',ai:true},
+        {key:'great',ai:false},
+        {key:'strong',ai:false}
+      ];
+      selectionOptions.innerHTML=levels.map(level=>{
+        const active=state.manualRatio===null&&state.selectionLevel===level.key;
+        const label=rangeLabel(items,level.key);
+        return '<button class="chip choice-chip '+(level.ai?'ai-choice ':'')+(active?'active':'')+'" data-level="'+level.key+'">'+label+'</button>';
+      }).join('')+'<button class="chip edit-chip '+(state.manualRatio!==null?'active':'')+'" data-sheet="custom" aria-label="Задать свою скидку"><img src="./assets/icon4.svg" alt=""></button>';
     }
 
-    function showToast(message){toast.textContent=message;toast.classList.add('visible');setTimeout(()=>toast.classList.remove('visible'),2200)}
+    function renderHeroMetrics(){
+      heroMetrics.classList.toggle('metrics-data',state.metrics);
+      if(state.metrics){
+        heroMetrics.innerHTML='<div class="metric"><strong>+86 <img src="./assets/metrics-heart.png" alt=""></strong><span>Добавлений в избранное</span></div><div class="metric"><strong>+120 <img src="./assets/metrics-eye.png" alt=""></strong><span>Количество просмотров</span></div><button class="metric metric-action" data-sheet="metrics"><img src="./assets/metrics-action.png" alt=""><span>Как мы это считаем</span></button>';
+      }else{
+        heroMetrics.innerHTML='<div class="metric"><strong>x2,5</strong><span>Растет скорость продажи</span></div><div class="metric"><strong>x3</strong><span>Растёт количество покупателей</span></div>';
+      }
+      variantToggle.querySelectorAll('[data-metrics]').forEach(button=>button.classList.toggle('active',(button.dataset.metrics==='true')===state.metrics));
+    }
+
+    function showToast(message){
+      toast.textContent=message;
+      toast.classList.add('visible');
+      setTimeout(()=>toast.classList.remove('visible'),2200);
+    }
 
     function resetPrototype(){
       state.tab='eligible';
       state.selected.clear();
       state.applied.clear();
-      state.applied.set(oakley.id,546);
-      state.multiMode='minimum';
-      state.singleMode='optimal';
-      state.singleValue=null;
+      state.applied.set(oakley.id,300);
+      state.selectionLevel='ai';
+      state.manualRatio=null;
       state.auto=false;
-      state.autoMode='minimum';
       state.priceBand=0;
+      state.metrics=false;
       scroll.scrollTop=0;
       stickyHeader.classList.remove('visible');
       backdrop.classList.remove('visible');
@@ -395,32 +519,39 @@
       control.classList.remove('active');
       control.setAttribute('aria-checked','false');
       control.querySelector('img').src='./assets/switch-inactive.svg';
+      renderHeroMetrics();
       renderCatalog();
     }
 
     function loadImage(url){
       return new Promise((resolve,reject)=>{
         const image=new Image();
-        const timeout=setTimeout(()=>reject(new Error(`Таймаут загрузки ${url}`)),20000);
+        const timeout=setTimeout(()=>reject(new Error('Таймаут загрузки '+url)),20000);
         image.onload=async()=>{
           try{
             if(image.decode)await image.decode();
             clearTimeout(timeout);
             warmedImages.push(image);
             resolve();
-          }catch(error){clearTimeout(timeout);reject(error)}
+          }catch(error){
+            clearTimeout(timeout);
+            reject(error);
+          }
         };
-        image.onerror=()=>{clearTimeout(timeout);reject(new Error(`Не удалось загрузить ${url}`))};
+        image.onerror=()=>{
+          clearTimeout(timeout);
+          reject(new Error('Не удалось загрузить '+url));
+        };
         image.src=url;
       });
     }
 
     async function loadFont(font){
       const response=await fetch(font.url,{cache:'force-cache'});
-      if(!response.ok)throw new Error(`Не удалось загрузить ${font.url}`);
+      if(!response.ok)throw new Error('Не удалось загрузить '+font.url);
       await response.arrayBuffer();
-      const faces=await document.fonts.load(`${font.weight} 16px "Avito Sans Text"`);
-      if(!faces.length)throw new Error(`Не удалось подготовить ${font.url}`);
+      const faces=await document.fonts.load(font.weight+' 16px "Avito Sans Text"');
+      if(!faces.length)throw new Error('Не удалось подготовить '+font.url);
     }
 
     async function loadRequiredResources(){
@@ -431,7 +562,9 @@
         ...imageAssets.map(url=>({key:url,load:()=>loadImage(url)})),
         ...fontAssets.map(font=>({key:font.url,load:()=>loadFont(font)}))
       ];
-      const updateProgress=()=>{bootProgress.style.width=`${Math.round(preparedResources.size/resources.length*100)}%`};
+      const updateProgress=()=>{
+        bootProgress.style.width=Math.round(preparedResources.size/resources.length*100)+'%';
+      };
       updateProgress();
       try{
         const pending=resources.filter(resource=>!preparedResources.has(resource.key));
@@ -447,6 +580,7 @@
         if(directMode==='phone'||directMode==='desktop')startViewer(directMode);
         else showViewerChoice();
       }catch(error){
+        console.error(error);
         boot.classList.add('error');
         bootTitle.textContent='Не удалось загрузить прототип';
         bootCopy.textContent='Проверьте соединение и попробуйте ещё раз';
@@ -462,7 +596,7 @@
       resetPrototype();
       viewerChoice.hidden=true;
       boot.hidden=true;
-      viewerShell.className=`viewer-shell ${mode}`;
+      viewerShell.className='viewer-shell '+mode;
       viewerShell.hidden=false;
       viewerShell.inert=false;
       viewerShell.setAttribute('aria-hidden','false');
@@ -470,7 +604,13 @@
     }
 
     function updateDeviceScale(){
-      const scale=Math.min(1,(window.innerWidth-32)/395,(window.innerHeight-32)/832);
+      if(viewerShell.hidden)return;
+      const desktop=viewerShell.classList.contains('desktop');
+      const width=desktop?395:375;
+      const height=desktop?832:812;
+      const horizontalMargin=desktop?32:8;
+      const verticalSpace=64;
+      const scale=Math.min(1,(window.innerWidth-horizontalMargin)/width,(window.innerHeight-verticalSpace)/height);
       viewerShell.style.setProperty('--device-scale',Math.max(.2,scale));
     }
 
@@ -478,42 +618,56 @@
       if(type==='auto')renderRateSheet(true);
       if(type==='info')renderRateSheet(false);
       if(type==='custom')renderCustomSheet();
+      if(type==='metrics')renderMetricsSheet();
       backdrop.classList.add('visible');
-      if(type==='custom')setTimeout(()=>document.getElementById('amountInput')?.focus({preventScroll:true}),50);
+      if(type==='custom'){
+        setTimeout(()=>{
+          const input=document.getElementById('amountInput');
+          input?.focus({preventScroll:true});
+          input?.select();
+        },50);
+      }
     }
 
-    function bands(){return[
-      {label:'До 1 000 ₽',max:1000},
-      {label:'1 000–3 000 ₽',max:3000},
-      {label:'3 000–6 000 ₽',max:6000},
-      {label:'6 000–10 000 ₽',max:10000},
-      {label:'10 000–20 000 ₽',max:20000}
-    ]}
+    function bands(){
+      return[
+        {label:'До 1 000 ₽',max:1000},
+        {label:'1 000–3 000 ₽',max:3000},
+        {label:'3 000–6 000 ₽',max:6000},
+        {label:'6 000–10 000 ₽',max:10000},
+        {label:'10 000–20 000 ₽',max:20000}
+      ];
+    }
 
     function renderRateSheet(auto){
-      const mode=auto?state.autoMode:state.multiMode;
       const band=bands()[state.priceBand];
-      const value=discount(band.max,mode);
-      sheet.className=`sheet ${auto?'auto-sheet':'info-sheet'}`;
-      const close=`<button class="close" aria-label="Закрыть"><img src="./assets/close.svg" alt=""></button>`;
-      const selector=`<div class="segmented"><button class="segment ${mode==='minimum'?'active':''}" data-rate-mode="minimum" data-auto="${auto}">Минимальная</button><button class="segment ${mode==='optimal'?'active':''}" data-rate-mode="optimal" data-auto="${auto}">Оптимальная</button></div>`;
-      const priceBands=`<span class="sheet-label price-label">Если цена товара</span><div class="chips-row">${bands().map((item,index)=>`<button class="chip ${state.priceBand===index?'active':''}" data-band="${index}" data-auto="${auto}">${item.label}</button>`).join('')}</div>`;
+      const value=minimumDiscount(band.max);
+      sheet.className='sheet '+(auto?'auto-sheet':'info-sheet');
+      const close='<button class="close" aria-label="Закрыть"><img src="./assets/close.svg" alt=""></button>';
+      const priceBands='<span class="sheet-label price-label">Если цена товара</span><div class="chips-row">'+bands().map((item,index)=>'<button class="chip '+(state.priceBand===index?'active':'')+'" data-band="'+index+'" data-auto="'+auto+'">'+item.label+'</button>').join('')+'</div>';
       if(auto){
-        sheet.innerHTML=`${close}<h2>Включать новым товарам<br>скидку на доставку</h2><p>Будем автоматически подключать новым объявлениям скидку:</p>${selector}<div class="result-card"><strong>До ${rubles(value)}</strong><span>Скидка на доставку, которую установим для нового объявления</span></div>${priceBands}<div class="calculation-copy"><strong>Как рассчитывается скидка</strong><p>Скидка зависит от стоимости доставки, которая в свою очередь зависит от стоимости и габаритов товара</p></div><div class="sheet-footer"><button class="primary" id="enableAuto">Включать новым товарам</button></div>`;
+        sheet.innerHTML=close+'<h2>Включать новым товарам<br>скидку на доставку</h2><p>Будем автоматически подключать новым объявлениям скидку:</p><div class="result-card"><strong>До '+rubles(value)+'</strong><span>Скидка на доставку, которую установим для нового объявления</span></div>'+priceBands+'<div class="calculation-copy"><strong>Как рассчитывается скидка</strong><p>Скидка зависит от стоимости доставки, которая в свою очередь зависит от стоимости и габаритов товара</p><a class="details-link" href="#" data-details>Подробнее</a></div><div class="sheet-footer"><button class="primary" id="enableAuto">Включать новым товарам</button></div>';
       }else{
-        sheet.innerHTML=`${close}<h2>Как мы считаем<br>скидку для товара</h2><p>Скидка зависит от стоимости доставки, которая в свою очередь зависит от стоимости и габаритов товара</p>${priceBands}<span class="sheet-label discount-label">Скидка на доставку</span><div class="result-card info-result">${selector}<strong>До ${rubles(value)}</strong><span>Скидка на доставку, которую<br>предложим для объявлений</span></div>`;
+        sheet.innerHTML=close+'<h2>Как мы считаем<br>скидку для товара</h2><p>Минимальная скидка составляет 100 ₽ на каждую 1 000 ₽ цены товара. Нейросеть предлагает усиленный вариант с учётом стоимости товара.</p>'+priceBands+'<span class="sheet-label discount-label">Скидка на доставку</span><div class="result-card info-result"><strong>От '+rubles(value)+'</strong><span>Максимум для ручной настройки — '+rubles(value*5)+'</span></div>';
       }
+    }
+
+    function renderMetricsSheet(){
+      sheet.className='sheet metrics-sheet';
+      sheet.innerHTML='<button class="close" aria-label="Закрыть"><img src="./assets/close.svg" alt=""></button><h2>Данные о скидках</h2><div class="metrics-summary"><strong>287</strong><p>Товаров подключались к скидке на доставку за период 29 июля – 28 августа</p><div class="metrics-growth"><div class="growth-row"><img src="./assets/metrics-eye.png" alt=""><strong>+120</strong><span>Прибавилось просмотров</span></div><div class="growth-row"><img src="./assets/metrics-heart.png" alt=""><strong>+24</strong><span>Выросло добавлений в избранное</span></div></div></div><div class="metrics-explanation"><h3>Как мы считаем показатели?</h3><div class="metrics-step"><span class="metrics-step-visual"></span><p>Считаем количество товаров которым вы подключали скидки</p></div><div class="metrics-step"><span class="metrics-step-visual"></span><p>Отслеживаем прирост просмотров и добавлений в избранное после подключения скидок</p></div><div class="metrics-step"><span class="metrics-step-visual"></span><p>Обновляем данные раз в сутки, суммируя показатели за 30 дней</p></div></div>';
     }
 
     function renderCustomSheet(){
       const item=selectedItems()[0];
       if(!item)return;
-      const minimum=discount(item.price,'minimum');
-      const value=Math.min(item.price,Math.max(minimum,state.singleValue??discount(item.price,'optimal')));
-      state.singleValue=value;
-      const progress=(value-minimum)/(item.price-minimum)*100;
+      const minimum=minimumDiscount(item.price);
+      const maximum=maximumDiscount(item.price);
+      const current=state.manualRatio===null?discount(item.price,state.selectionLevel):roundHundred(item.price*state.manualRatio);
+      const value=Math.min(maximum,Math.max(minimum,current));
+      state.manualRatio=value/item.price;
+      const progress=(value-minimum)/(maximum-minimum)*100;
       sheet.className='sheet custom-sheet';
-      sheet.innerHTML=`<div class="custom-value" id="customValue">${rubles(value)}</div><input class="amount-input" id="amountInput" type="number" inputmode="numeric" min="${minimum}" max="${item.price}" value="${value}" aria-label="Размер скидки"><input class="slider" id="amountSlider" type="range" min="${minimum}" max="${item.price}" value="${value}" style="--progress:${progress}%"><div class="slider-limits"><span>${rubles(minimum)}</span><span>${rubles(item.price)}</span></div><button class="primary" id="saveCustom">Готово</button>`;
+      sheet.innerHTML='<div class="manual-input-wrap"><input class="amount-input" id="amountInput" type="number" inputmode="numeric" step="100" min="'+minimum+'" max="'+maximum+'" value="'+value+'" aria-label="Размер скидки"><span>₽</span><button class="clear-amount" id="clearAmount" aria-label="Очистить">×</button></div><input class="slider" id="amountSlider" type="range" step="100" min="'+minimum+'" max="'+maximum+'" value="'+value+'" style="--progress:'+progress+'%"><div class="slider-limits"><span>'+rubles(minimum)+'</span><span>'+rubles(maximum)+'</span></div><button class="primary" id="saveCustom">Применить</button>';
     }
 
     catalog.addEventListener('click',event=>{
@@ -522,58 +676,142 @@
       if(product&&state.tab==='eligible'){
         const id=product.dataset.id;
         state.selected.has(id)?state.selected.delete(id):state.selected.add(id);
-        state.singleMode='optimal';state.singleValue=null;renderCatalog();
+        state.selectionLevel='ai';
+        state.manualRatio=null;
+        renderCatalog();
       }else if(category){
         const target=categories.find(item=>item.name===category.dataset.category);
-        const allChosen=target.items.every(item=>state.selected.has(item.id));
-        target.items.forEach(item=>allChosen?state.selected.delete(item.id):state.selected.add(item.id));
+        const items=target.items.filter(item=>!state.applied.has(item.id));
+        const allChosen=items.every(item=>state.selected.has(item.id));
+        items.forEach(item=>allChosen?state.selected.delete(item.id):state.selected.add(item.id));
+        state.selectionLevel='ai';
+        state.manualRatio=null;
         renderCatalog();
       }
     });
 
-    document.querySelector('.tabs').addEventListener('click',event=>{const tab=event.target.closest('[data-tab]');if(!tab)return;state.tab=tab.dataset.tab;renderCatalog()});
-    document.getElementById('selectAll').addEventListener('click',()=>{allItems.forEach(item=>state.selected.add(item.id));renderCatalog()});
-    document.getElementById('clearSelection').addEventListener('click',()=>{state.selected.clear();renderCatalog()});
-    scroll.addEventListener('scroll',()=>stickyHeader.classList.toggle('visible',scroll.scrollTop>=262),{passive:true});
+    document.querySelector('.tabs').addEventListener('click',event=>{
+      const tab=event.target.closest('[data-tab]');
+      if(!tab)return;
+      state.tab=tab.dataset.tab;
+      renderCatalog();
+    });
+
+    document.getElementById('selectAll').addEventListener('click',()=>{
+      eligibleItems().forEach(item=>state.selected.add(item.id));
+      state.selectionLevel='ai';
+      state.manualRatio=null;
+      renderCatalog();
+    });
+
+    document.getElementById('clearSelection').addEventListener('click',()=>{
+      state.selected.clear();
+      renderCatalog();
+    });
+
+    scroll.addEventListener('scroll',()=>{
+      stickyHeader.classList.toggle('visible',scroll.scrollTop>=262);
+    },{passive:true});
+
     selectionOptions.addEventListener('click',event=>{
-      const single=event.target.closest('[data-single]');const multi=event.target.closest('[data-multi]');const sheetButton=event.target.closest('[data-sheet]');
-      if(single){state.singleMode=single.dataset.single;state.singleValue=null;renderCatalog()}
-      if(multi){state.multiMode=multi.dataset.multi;renderCatalog()}
+      const level=event.target.closest('[data-level]');
+      const sheetButton=event.target.closest('[data-sheet]');
+      if(level){
+        state.selectionLevel=level.dataset.level;
+        state.manualRatio=null;
+        renderCatalog();
+      }
       if(sheetButton)openSheet(sheetButton.dataset.sheet);
     });
-    document.getElementById('applyDiscount').addEventListener('click',()=>{
+
+    document.getElementById('applyDiscount').addEventListener('click',async()=>{
       const items=selectedItems();
+      if(!items.length)return;
+      items.forEach(item=>document.querySelector('.product[data-id="'+item.id+'"]')?.classList.add('removing'));
+      await new Promise(resolve=>setTimeout(resolve,230));
       items.forEach(item=>{
-        let value;
-        if(items.length>1)value=discount(item.price,state.multiMode);
-        else if(state.singleMode==='optimal')value=discount(item.price,'optimal');
-        else if(state.singleMode==='custom')value=state.singleValue;
-        else value=Math.min(item.price,Number(state.singleMode));
+        const value=state.manualRatio===null?discount(item.price,state.selectionLevel):Math.min(maximumDiscount(item.price),Math.max(minimumDiscount(item.price),roundHundred(item.price*state.manualRatio)));
         state.applied.set(item.id,value);
       });
-      state.selected.clear();renderCatalog();showToast(`Скидка применена к ${items.length} ${items.length===1?'товару':'товарам'}`);
+      state.selected.clear();
+      state.manualRatio=null;
+      renderCatalog();
+      showToast('Скидка применена к '+items.length+' '+(items.length===1?'товару':'товарам'));
     });
+
     document.getElementById('autoSwitch').addEventListener('click',()=>openSheet('auto'));
-    document.addEventListener('click',event=>{const trigger=event.target.closest('[data-sheet]');if(trigger&&!trigger.closest('#selectionOptions'))openSheet(trigger.dataset.sheet)});
-    backdrop.addEventListener('click',event=>{if(event.target===backdrop||event.target.closest('.close'))backdrop.classList.remove('visible')});
-    sheet.addEventListener('click',event=>{
-      const mode=event.target.closest('[data-rate-mode]');const band=event.target.closest('[data-band]');
-      if(mode){const auto=mode.dataset.auto==='true';auto?state.autoMode=mode.dataset.rateMode:state.multiMode=mode.dataset.rateMode;renderRateSheet(auto)}
-      if(band){state.priceBand=Number(band.dataset.band);renderRateSheet(band.dataset.auto==='true')}
-      if(event.target.id==='enableAuto'){state.auto=true;const control=document.getElementById('autoSwitch');control.classList.add('active');control.setAttribute('aria-checked','true');control.querySelector('img').src='./assets/switch-active.svg';backdrop.classList.remove('visible');showToast('Скидка для новых товаров включена')}
-      if(event.target.id==='saveCustom'){state.singleMode='custom';backdrop.classList.remove('visible');renderCatalog()}
+
+    document.addEventListener('click',event=>{
+      const trigger=event.target.closest('[data-sheet]');
+      if(trigger&&!trigger.closest('#selectionOptions'))openSheet(trigger.dataset.sheet);
     });
+
+    backdrop.addEventListener('click',event=>{
+      if(event.target===backdrop||event.target.closest('.close'))backdrop.classList.remove('visible');
+    });
+
+    sheet.addEventListener('click',event=>{
+      const band=event.target.closest('[data-band]');
+      if(band){
+        state.priceBand=Number(band.dataset.band);
+        renderRateSheet(band.dataset.auto==='true');
+      }
+      if(event.target.closest('[data-details]'))event.preventDefault();
+      if(event.target.id==='enableAuto'){
+        state.auto=true;
+        const control=document.getElementById('autoSwitch');
+        control.classList.add('active');
+        control.setAttribute('aria-checked','true');
+        control.querySelector('img').src='./assets/switch-active.svg';
+        backdrop.classList.remove('visible');
+        showToast('Скидка для новых товаров включена');
+      }
+      if(event.target.id==='clearAmount'){
+        const input=document.getElementById('amountInput');
+        input.value='';
+        input.focus({preventScroll:true});
+      }
+      if(event.target.id==='saveCustom'){
+        const item=selectedItems()[0];
+        if(item){
+          const minimum=minimumDiscount(item.price);
+          const maximum=maximumDiscount(item.price);
+          const input=document.getElementById('amountInput');
+          state.manualRatio=Math.min(maximum,Math.max(minimum,Number(input.value)||minimum))/item.price;
+        }
+        backdrop.classList.remove('visible');
+        renderCatalog();
+      }
+    });
+
     sheet.addEventListener('input',event=>{
       if(!['amountInput','amountSlider'].includes(event.target.id))return;
-      const item=selectedItems()[0];const minimum=discount(item.price,'minimum');
-      state.singleValue=Math.min(item.price,Math.max(minimum,Number(event.target.value)||minimum));
-      const input=document.getElementById('amountInput');const slider=document.getElementById('amountSlider');
-      input.value=state.singleValue;slider.value=state.singleValue;slider.style.setProperty('--progress',`${(state.singleValue-minimum)/(item.price-minimum)*100}%`);document.getElementById('customValue').textContent=rubles(state.singleValue);
+      const item=selectedItems()[0];
+      if(!item)return;
+      const minimum=minimumDiscount(item.price);
+      const maximum=maximumDiscount(item.price);
+      const value=Math.min(maximum,Math.max(minimum,Number(event.target.value)||minimum));
+      state.manualRatio=value/item.price;
+      const input=document.getElementById('amountInput');
+      const slider=document.getElementById('amountSlider');
+      if(event.target.id==='amountSlider')input.value=value;
+      slider.value=value;
+      slider.style.setProperty('--progress',(value-minimum)/(maximum-minimum)*100+'%');
+      if(event.target.id==='amountSlider')requestAnimationFrame(()=>input.focus({preventScroll:true}));
     });
+
+    variantToggle.addEventListener('click',event=>{
+      const button=event.target.closest('[data-metrics]');
+      if(!button)return;
+      state.metrics=button.dataset.metrics==='true';
+      renderHeroMetrics();
+    });
+
     viewerChoice.addEventListener('click',event=>{
       const option=event.target.closest('[data-viewer]');
       if(option)startViewer(option.dataset.viewer);
     });
+
     bootRetry.addEventListener('click',loadRequiredResources);
     window.addEventListener('resize',updateDeviceScale,{passive:true});
     loadRequiredResources();
