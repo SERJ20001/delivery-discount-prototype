@@ -48,7 +48,7 @@
     .desktop .system-status{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:13px;line-height:16px;font-weight:700}
     .desktop .system-status-right{font-size:11px;letter-spacing:.2px}
     .desktop .system-home{height:34px;display:flex;align-items:center;justify-content:center}
-    .desktop .system-home::after{content:"";width:134px;height:5px;border-radius:5px;background:#111}
+    .desktop .system-home::after{content:"";position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:5px;background:#111}
     .prototype-stage{position:relative;width:100%;height:100%;overflow:hidden;background:#fff}
     .desktop .prototype-stage{height:734px;flex:none}
     .app{position:relative;width:min(100%,375px);height:100dvh;margin:0 auto;background:#fff;overflow:hidden}
@@ -89,7 +89,7 @@
     .auto-row .help{position:static;margin-left:auto}
     .switch{width:40px;height:34px;margin-left:-4px;border:0;background:transparent;display:grid;place-items:center;padding:0;cursor:pointer;flex:none}
     .switch img{width:32px;height:18px}
-    .tabs{position:sticky;top:0;z-index:8;height:52px;background:#fff;padding:16px 16px 0;border-bottom:2px solid var(--line);display:flex;gap:12px}
+    .tabs{position:relative;z-index:8;height:52px;background:#fff;padding:16px 16px 0;border-bottom:2px solid var(--line);display:flex;gap:12px}
     .tab{height:36px;border:0;background:none;padding:0 0 12px;font-size:18px;font-weight:800;color:var(--secondary);cursor:pointer}
     .tab.active{color:#111;border-bottom:3px solid #111}
     .tab small{font-size:13px;margin-left:4px;color:var(--secondary);vertical-align:top}
@@ -184,54 +184,85 @@
     .system-status{height:44px;display:flex;padding:0;overflow:hidden}
     .system-status img{display:block;width:375px;height:44px;object-fit:cover}
     .system-home{height:34px;display:flex;align-items:center;justify-content:center}
-    .system-home::after{content:"";width:134px;height:5px;border-radius:5px;background:#111}
+    .system-home::after{content:"";position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:5px;background:#111}
     .prototype-stage{height:734px;flex:none}
     .desktop .system-status{padding:0}
     .desktop .system-home{display:flex}
     .hero{height:310px}
-    .metrics.metrics-data{grid-template-columns:1fr 1fr 80px}
-    .metrics-data .metric{padding:10px;height:80px}
-    .metrics-data .metric strong{display:flex;align-items:center;gap:5px;font-size:18px}
-    .metrics-data .metric strong img{width:20px;height:20px}
-    .metrics-data .metric span{font-size:12px;line-height:15px}
+    .metrics.metrics-data{grid-template-columns:125px 125px 93px}
+    .metrics-data .metric{padding:10px 12px 12px;height:80px;min-width:0}
+    .metrics-data .metric strong{display:flex;align-items:center;gap:3px;font-size:18px}
+    .metrics-data .metric strong img{width:16px;height:16px}
+    .metrics-data .metric span{font-size:13px;line-height:16px}
     .metric-action{border:0;cursor:pointer;text-align:left}
-    .metric-action img{display:block;width:15px;height:15px;margin-bottom:8px}
-    .auto-arrow{width:32px;height:32px;margin-left:auto;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
-    .auto-arrow img{width:20px;height:20px}
+    .metric-action img{position:absolute;top:13px;left:12px;width:15px;height:15px}
+    .metric-action span{position:absolute;top:36px;left:12px;right:12px}
+    .auto-arrow{width:32px;height:42px;margin-left:auto;margin-right:-12px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
+    .auto-arrow img{width:8px;height:16px}
     .product{transition:opacity .22s ease,transform .22s ease,max-height .22s ease,min-height .22s ease,padding .22s ease}
     .product.removing{opacity:0;transform:translateX(18px)}
-    .calculator{padding:0 10px 14px;overflow:hidden}
-    .calculator-status{height:28px;margin:0 -10px 10px;display:flex;align-items:center;justify-content:center;background:#ececec;font-size:12px;line-height:16px;color:#5c5c5c}
-    .calculator-status.ai{background:linear-gradient(90deg,#ffe3ee,#e7dcff);color:#5b2c67}
-    .calculator-status.great{background:#dcf8d0;color:#346221}
-    .options{padding:0 1px}
-    .choice-chip{min-width:max-content}
-    .choice-chip.ai-choice::before{content:"✦";margin-right:4px;color:#7b48d8}
-    .sheet.auto-sheet{height:642px;max-height:calc(100% - 20px)}
-    .auto-sheet>.result-card{margin-top:24px}
-    .auto-sheet .details-link{display:inline-block;margin-top:8px;color:#111;text-decoration:underline;text-underline-offset:2px}
-    .sheet.metrics-sheet{height:642px;padding-top:38px;overflow-y:auto}
-    .metrics-summary{margin-top:20px;border-radius:20px;padding:20px 16px 16px;background:linear-gradient(145deg,#f8ddff,#e7f0ff)}
-    .metrics-summary>strong{font-size:32px;line-height:36px;display:block;margin-bottom:4px}
-    .metrics-summary>p{font-size:14px;line-height:18px;margin-bottom:16px}
-    .metrics-growth{background:#fff;border-radius:14px;padding:12px;display:grid;gap:10px}
-    .growth-row{display:flex;align-items:center;gap:8px}
+    .calculator{padding:0;border-radius:32px 32px 0 0;overflow:hidden}
+    .calculator-controls{position:relative;background:#fff;border-radius:24px 24px 0 0;margin-top:-24px;padding:0 10px}
+    .calculator-controls>.primary{margin:0}
+    .selection{gap:10px}
+    .calculator-status{height:58px;padding:8px 0 34px;display:flex;gap:3px;align-items:center;justify-content:center;background:#efefef;font-size:13px;line-height:16px;color:#000}
+    .calculator-status button{width:12px;height:16px;padding:0;border:0;background:none;cursor:pointer}
+    .calculator-status img{display:block;width:12px;height:16px}
+    .calculator-status.ai{background:linear-gradient(246.19deg,#965eeb 4.49%,#ff4053 99.12%);color:#fff}
+    .calculator-status.great{background:linear-gradient(246.19deg,#03ba50 4.49%,#57ec96 99.12%);color:#fff}
+    .options{padding:12px 0 14px}
+    .choice-chip{height:36px;display:flex;align-items:center;justify-content:center;gap:3px;padding:0 11px;font-weight:500;flex:1;min-width:0}
+    .options.multiple .choice-chip{flex:none;min-width:max-content;padding:0 14px}
+    .choice-chip.ai-choice{flex:none;min-width:76px}
+    .choice-chip img{width:12px;height:16px}
+    .choice-chip.ai-choice.active{box-shadow:inset 0 0 0 2px #965eeb}
+
+    .sheet.auto-sheet{height:507px;max-height:calc(100% - 20px)}
+    .auto-sheet>.result-card{margin-top:20px}
+    .auto-sheet .calculation-copy{margin-top:16px;color:var(--secondary)}
+    .auto-sheet .calculation-copy p{font-size:13px;line-height:18px}
+    .auto-sheet .sheet-footer{margin-top:10px}
+    .auto-sheet .details-link{border:0;background:none;padding:0;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+    .sheet.metrics-sheet{height:642px;padding:32px 16px 24px;overflow-y:auto}
+    .metrics-sheet h2{font-size:26px;line-height:30px;margin-bottom:16px}
+    .metrics-summary{margin:0 -4px;border-radius:24px;padding:14px 2px 2px;background:radial-gradient(ellipse at 80% 20%,#e0f4ff,transparent 80%),radial-gradient(ellipse at 0 100%,#ffe6e6,transparent 70%),#fcf0fc}
+    .metrics-summary>strong{font-size:21px;line-height:26px;display:block;margin:0 16px 6px}
+    .metrics-summary>p{font-size:15px;line-height:20px;margin:0 16px 12px}
+    .metrics-growth{background:#fff;border-radius:22px;padding:16px;display:grid;gap:16px}
+    .growth-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
     .growth-row img{width:20px;height:20px}
-    .growth-row strong{font-size:16px;line-height:20px;min-width:48px}
-    .growth-row span{font-size:13px;line-height:16px;color:var(--secondary)}
-    .metrics-explanation{margin-top:24px}
-    .metrics-explanation h3{font-size:20px;line-height:24px;margin:0 0 14px}
-    .metrics-step{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;margin:0 0 12px}
+    .growth-row strong{font-size:21px;line-height:26px}
+    .growth-row span{flex-basis:100%;font-size:15px;line-height:20px;color:var(--secondary)}
+    .metrics-explanation{margin-top:32px}
+    .metrics-explanation h3{font-size:21px;line-height:26px;margin:0 0 6px}
+    .metrics-step{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;padding:11px 0}
     .metrics-step-visual{width:48px;height:48px;border-radius:14px;background:var(--control)}
-    .metrics-step p{font-size:14px;line-height:18px}
-    .sheet.custom-sheet{height:248px;border-radius:24px 24px 0 0;padding:16px 10px 14px}
-    .manual-input-wrap{height:48px;border-radius:14px;background:var(--control);display:flex;align-items:center;padding:0 12px;margin-bottom:18px}
-    .amount-input{position:static;width:100%;height:100%;opacity:1;border:0;background:transparent;font-size:20px;line-height:24px;font-weight:700;outline:0}
+    .metrics-step p{font-size:15px;line-height:20px}
+    .sheet.custom-sheet{height:auto;max-height:100%;border-radius:24px 24px 0 0;padding:0;overflow:hidden}
+    .manual-controls{height:167px;position:relative;padding:10px}
+    .manual-input-wrap{height:52px;border-radius:16px;background:var(--control);display:flex;align-items:center;gap:6px;padding:0 18px;position:relative;font-size:15px;font-weight:500}
+    .amount-input{position:static;width:3ch;max-width:250px;height:100%;padding:0;opacity:1;border:0;background:transparent;font-size:15px;line-height:20px;font-weight:500;outline:0}
     .amount-input::-webkit-inner-spin-button{display:none}
-    .clear-amount{width:28px;height:28px;border:0;border-radius:50%;background:#d5d5d5;display:grid;place-items:center;font-size:18px;cursor:pointer}
-    .custom-sheet .slider{width:calc(100% - 12px)}
-    .custom-sheet .primary{background:#111;color:#fff;margin-top:18px}
+    .clear-amount{position:absolute;right:8px;top:5px;width:30px;height:40px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer}
+    .clear-amount img{width:14px;height:20px}
+    .slider-wrap{position:relative;margin:-9px 24px 0;height:35px}
+    .custom-sheet .slider{position:relative;z-index:2;display:block;width:100%;margin:0;height:16px;cursor:pointer}
+    .custom-sheet .slider-limits{padding:0;margin:0;line-height:16px}
+    .slider::-webkit-slider-thumb{background:transparent url(./assets/slider-thumb.svg) center/16px 16px no-repeat}
+    .slider::-moz-range-thumb{background:transparent url(./assets/slider-thumb.svg) center/16px 16px no-repeat}
+    .slider-recommendation{position:absolute;inset:0;pointer-events:none}
+    .slider-recommendation>img{position:absolute;left:var(--recommendation);top:0;transform:translateX(-50%);width:16px;height:16px}
+    .slider-recommendation span{position:absolute;top:16px;left:clamp(58px,var(--recommendation),calc(100% - 60px));transform:translateX(-50%);display:flex;align-items:center;gap:3px;font-size:13px;line-height:16px;color:var(--secondary)}
+    .slider-recommendation span img{width:12px;height:16px}
+    .custom-sheet .primary{position:absolute;left:10px;right:10px;bottom:13px;width:355px;background:#111;color:#fff;margin:0}
     .custom-value{display:none}
+    .numeric-keyboard{height:255px;background:#d4d6dc;padding:6px 6px 41px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,46px);gap:8px 6px}
+    .numeric-key{padding:0;border:0;border-radius:5px;background:#fcfcfe;box-shadow:0 1px 0 rgba(0,0,0,.35);font-family:inherit;color:#000;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:25px;line-height:29px}
+    .numeric-key small{font-size:10px;line-height:12px;letter-spacing:2px;font-weight:600}
+    .numeric-key.delete-key{background:transparent;box-shadow:none}
+    .numeric-key img{width:23px;height:17px}
+    .numeric-key:active{background:#bcc0c8}
+    .device.keyboard-open .system-home{background:#d4d6dc}
     @media (max-height:680px){.variant-toggle{height:38px}.viewer-shell{gap:6px}}
     @media (min-width:376px){.phone .app{box-shadow:none}}
     @media (max-width:560px){
@@ -304,7 +335,7 @@
     </section>
     <section class="selection" id="selection">
       <div class="count-pill"><button class="check active" id="clearSelection" aria-label="Снять выбор"><img src="./assets/checkbox-active.svg" alt=""></button><span id="selectionCount"></span></div>
-      <div class="calculator"><div class="calculator-status" id="calculatorStatus"></div><div class="options" id="selectionOptions"></div><button class="primary" id="applyDiscount">Применить</button><p class="caption">Считаем скидки индивидуально <button class="info-dot" data-sheet="info" aria-label="Подробнее"><img src="./assets/icon.svg" alt=""></button></p></div>
+      <div class="calculator"><div class="calculator-status" id="calculatorStatus"></div><div class="calculator-controls"><div class="options" id="selectionOptions"></div><button class="primary" id="applyDiscount">Применить</button></div></div>
     </section>
     <div class="backdrop" id="backdrop"><section class="sheet" id="sheet"></section></div>
     <div class="toast" id="toast"></div>
@@ -378,7 +409,7 @@
     const variantToggle=document.getElementById('variantToggle');
     const heroMetrics=document.getElementById('heroMetrics');
     const imageAssets=[
-      './assets/arrow-forward.svg','./assets/checkbox-active.svg','./assets/checkbox-inactive.svg',
+      './assets/ai.svg','./assets/ai-marker.png','./assets/question-white.svg','./assets/clear-input.svg','./assets/slider-thumb.svg','./assets/keyboard-delete.svg','./assets/status-bar-plain.png','./assets/metrics-heart.svg','./assets/metrics-eye.svg','./assets/arrow-forward.svg','./assets/checkbox-active.svg','./assets/checkbox-inactive.svg',
       './assets/close.svg','./assets/ellipse29603.svg','./assets/ellipse29604.svg',
       './assets/ellipse3438.svg','./assets/help.svg','./assets/help1.svg','./assets/icon.svg',
       './assets/icon2.svg','./assets/icon3.svg','./assets/icon4.svg','./assets/image1.png',
@@ -452,7 +483,7 @@
       calculatorStatus.className='calculator-status';
       if(state.selectionLevel==='ai'&&state.manualRatio===null){
         calculatorStatus.classList.add('ai');
-        calculatorStatus.textContent='Скидку рекомендует нейросеть ⓘ';
+        calculatorStatus.innerHTML='<span>Скидку рекомендует нейросеть</span><button data-sheet="info" aria-label="О рекомендации"><img src="./assets/question-white.svg" alt=""></button>';
         return;
       }
       if(state.selectionLevel==='minimum'&&state.manualRatio===null){
@@ -469,6 +500,7 @@
       app.classList.toggle('has-selection',items.length>0);
       selectAllFooter.classList.toggle('hidden',items.length>0||state.tab!=='eligible');
       if(!items.length)return;
+      selectionOptions.classList.toggle('multiple',items.length>1);
       selectionCount.textContent=items.length+' '+productWord(items.length);
       renderCalculatorStatus();
       const levels=[
@@ -480,14 +512,14 @@
       selectionOptions.innerHTML=levels.map(level=>{
         const active=state.manualRatio===null&&state.selectionLevel===level.key;
         const label=rangeLabel(items,level.key);
-        return '<button class="chip choice-chip '+(level.ai?'ai-choice ':'')+(active?'active':'')+'" data-level="'+level.key+'">'+label+'</button>';
+        return '<button class="chip choice-chip '+(level.ai?'ai-choice ':'')+(active?'active':'')+'" data-level="'+level.key+'">'+(level.ai?'<img src="./assets/ai.svg" alt="">':'')+label+'</button>';
       }).join('')+'<button class="chip edit-chip '+(state.manualRatio!==null?'active':'')+'" data-sheet="custom" aria-label="Задать свою скидку"><img src="./assets/icon4.svg" alt=""></button>';
     }
 
     function renderHeroMetrics(){
       heroMetrics.classList.toggle('metrics-data',state.metrics);
       if(state.metrics){
-        heroMetrics.innerHTML='<div class="metric"><strong>+86 <img src="./assets/metrics-heart.png" alt=""></strong><span>Добавлений в избранное</span></div><div class="metric"><strong>+120 <img src="./assets/metrics-eye.png" alt=""></strong><span>Количество просмотров</span></div><button class="metric metric-action" data-sheet="metrics"><img src="./assets/metrics-action.png" alt=""><span>Как мы это считаем</span></button>';
+        heroMetrics.innerHTML='<div class="metric"><strong>+86 <img src="./assets/metrics-heart.svg" alt=""></strong><span>Добавлений<br>в избранное</span></div><div class="metric"><strong>+120 <img src="./assets/metrics-eye.svg" alt=""></strong><span>Количество<br>просмотров</span></div><button class="metric metric-action" data-sheet="metrics"><img src="./assets/metrics-action.png" alt=""><span>Как мы это считаем</span></button>';
       }else{
         heroMetrics.innerHTML='<div class="metric"><strong>x2,5</strong><span>Растет скорость продажи</span></div><div class="metric"><strong>x3</strong><span>Растёт количество покупателей</span></div>';
       }
@@ -511,8 +543,8 @@
       state.priceBand=0;
       state.metrics=false;
       scroll.scrollTop=0;
-      stickyHeader.classList.remove('visible');
-      backdrop.classList.remove('visible');
+      updateHeader();
+      closeSheet();
       sheet.innerHTML='';
       toast.classList.remove('visible');
       const control=document.getElementById('autoSwitch');
@@ -615,6 +647,7 @@
     }
 
     function openSheet(type){
+      document.querySelector('.device').classList.remove('keyboard-open');
       if(type==='auto')renderRateSheet(true);
       if(type==='info')renderRateSheet(false);
       if(type==='custom')renderCustomSheet();
@@ -646,7 +679,7 @@
       const close='<button class="close" aria-label="Закрыть"><img src="./assets/close.svg" alt=""></button>';
       const priceBands='<span class="sheet-label price-label">Если цена товара</span><div class="chips-row">'+bands().map((item,index)=>'<button class="chip '+(state.priceBand===index?'active':'')+'" data-band="'+index+'" data-auto="'+auto+'">'+item.label+'</button>').join('')+'</div>';
       if(auto){
-        sheet.innerHTML=close+'<h2>Включать новым товарам<br>скидку на доставку</h2><p>Будем автоматически подключать новым объявлениям скидку:</p><div class="result-card"><strong>До '+rubles(value)+'</strong><span>Скидка на доставку, которую установим для нового объявления</span></div>'+priceBands+'<div class="calculation-copy"><strong>Как рассчитывается скидка</strong><p>Скидка зависит от стоимости доставки, которая в свою очередь зависит от стоимости и габаритов товара</p><a class="details-link" href="#" data-details>Подробнее</a></div><div class="sheet-footer"><button class="primary" id="enableAuto">Включать новым товарам</button></div>';
+        sheet.innerHTML=close+'<h2>Включать новым товарам<br>скидку на доставку</h2><p>Будем автоматически подключать новым объявлениям скидку:</p><div class="result-card"><strong>До '+rubles(value)+'</strong><span>Скидка на доставку, которую установим для нового объявления</span></div>'+priceBands+'<div class="calculation-copy"><p>Скидка зависит от стоимости доставки, которая в свою очередь зависит от стоимости и габаритов товара. <button class="details-link" data-details>Подробнее</button></p></div><div class="sheet-footer"><button class="primary" id="enableAuto">Включать новым товарам</button></div>';
       }else{
         sheet.innerHTML=close+'<h2>Как мы считаем<br>скидку для товара</h2><p>Минимальная скидка составляет 100 ₽ на каждую 1 000 ₽ цены товара. Нейросеть предлагает усиленный вариант с учётом стоимости товара.</p>'+priceBands+'<span class="sheet-label discount-label">Скидка на доставку</span><div class="result-card info-result"><strong>От '+rubles(value)+'</strong><span>Максимум для ручной настройки — '+rubles(value*5)+'</span></div>';
       }
@@ -654,7 +687,28 @@
 
     function renderMetricsSheet(){
       sheet.className='sheet metrics-sheet';
-      sheet.innerHTML='<button class="close" aria-label="Закрыть"><img src="./assets/close.svg" alt=""></button><h2>Данные о скидках</h2><div class="metrics-summary"><strong>287</strong><p>Товаров подключались к скидке на доставку за период 29 июля – 28 августа</p><div class="metrics-growth"><div class="growth-row"><img src="./assets/metrics-eye.png" alt=""><strong>+120</strong><span>Прибавилось просмотров</span></div><div class="growth-row"><img src="./assets/metrics-heart.png" alt=""><strong>+24</strong><span>Выросло добавлений в избранное</span></div></div></div><div class="metrics-explanation"><h3>Как мы считаем показатели?</h3><div class="metrics-step"><span class="metrics-step-visual"></span><p>Считаем количество товаров которым вы подключали скидки</p></div><div class="metrics-step"><span class="metrics-step-visual"></span><p>Отслеживаем прирост просмотров и добавлений в избранное после подключения скидок</p></div><div class="metrics-step"><span class="metrics-step-visual"></span><p>Обновляем данные раз в сутки, суммируя показатели за 30 дней</p></div></div>';
+      sheet.innerHTML='<button class="close" aria-label="Закрыть"><img src="./assets/close.svg" alt=""></button><h2>Данные о скидках</h2><div class="metrics-summary"><strong>287</strong><p>Товаров подключались к скидке на доставку за период 29 июля – 28 августа</p><div class="metrics-growth"><div class="growth-row"><strong>+120</strong><img src="./assets/metrics-eye.png" alt=""><span>Прибавилось просмотров</span></div><div class="growth-row"><strong>+24</strong><img src="./assets/metrics-heart.png" alt=""><span>Выросло добавлений в избранное</span></div></div></div><div class="metrics-explanation"><h3>Как мы считаем показатели?</h3><div class="metrics-step"><span class="metrics-step-visual"></span><p>Считаем количество товаров которым вы подключали скидки</p></div><div class="metrics-step"><span class="metrics-step-visual"></span><p>Отслеживаем прирост просмотров и добавлений в избранное после подключения скидок</p></div><div class="metrics-step"><span class="metrics-step-visual"></span><p>Обновляем данные раз в сутки, суммируя показатели за 30 дней</p></div></div>';
+    }
+
+    function keyboardMarkup(){
+      const letters=['','АБВГ','ДЕЖЗ','ИЙКЛ','МНОП','РСТУ','ФХЦЧ','ШЩЪЫ','ЬЭЮЯ'];
+      const keys=letters.map((label,index)=>'<button class="numeric-key" data-key="'+(index+1)+'" aria-label="'+(index+1)+'"><span>'+(index+1)+'</span><small>'+label+'</small></button>').join('');
+      return '<div class="numeric-keyboard" aria-label="Цифровая клавиатура">'+keys+'<span></span><button class="numeric-key" data-key="0">0</button><button class="numeric-key delete-key" data-key="delete" aria-label="Удалить цифру"><img src="./assets/keyboard-delete.svg" alt=""></button></div>';
+    }
+
+    function updateManualInput(){
+      const input=document.getElementById('amountInput');
+      const slider=document.getElementById('amountSlider');
+      input.style.width=Math.max(1,input.value.length)+'ch';
+      const value=Math.min(Number(slider.max),Math.max(Number(slider.min),Number(input.value)||0));
+      slider.value=value;
+      slider.style.setProperty('--progress',(value-Number(slider.min))/(Number(slider.max)-Number(slider.min))*100+'%');
+    }
+
+    function closeSheet(){
+      document.activeElement?.blur();
+      backdrop.classList.remove('visible');
+      document.querySelector('.device').classList.remove('keyboard-open');
     }
 
     function renderCustomSheet(){
@@ -664,10 +718,13 @@
       const maximum=maximumDiscount(item.price);
       const current=state.manualRatio===null?discount(item.price,state.selectionLevel):roundHundred(item.price*state.manualRatio);
       const value=Math.min(maximum,Math.max(minimum,current));
-      state.manualRatio=value/item.price;
+      const recommended=discount(item.price,'ai');
       const progress=(value-minimum)/(maximum-minimum)*100;
+      const recommendation=(recommended-minimum)/(maximum-minimum)*100;
       sheet.className='sheet custom-sheet';
-      sheet.innerHTML='<div class="manual-input-wrap"><input class="amount-input" id="amountInput" type="number" inputmode="numeric" step="100" min="'+minimum+'" max="'+maximum+'" value="'+value+'" aria-label="Размер скидки"><span>₽</span><button class="clear-amount" id="clearAmount" aria-label="Очистить">×</button></div><input class="slider" id="amountSlider" type="range" step="100" min="'+minimum+'" max="'+maximum+'" value="'+value+'" style="--progress:'+progress+'%"><div class="slider-limits"><span>'+rubles(minimum)+'</span><span>'+rubles(maximum)+'</span></div><button class="primary" id="saveCustom">Применить</button>';
+      sheet.innerHTML='<div class="manual-controls"><div class="manual-input-wrap"><input class="amount-input" id="amountInput" type="text" inputmode="none" pattern="[0-9]*" autocomplete="off" value="'+value+'" aria-label="Размер скидки"><span>₽</span><button class="clear-amount" id="clearAmount" aria-label="Очистить"><img src="./assets/clear-input.svg" alt=""></button></div><div class="slider-wrap" style="--recommendation:'+recommendation+'%"><input class="slider" id="amountSlider" aria-label="Скидка на доставку" type="range" step="100" min="'+minimum+'" max="'+maximum+'" value="'+value+'" style="--progress:'+progress+'%"><div class="slider-limits"><span>'+rubles(minimum).replace(' ₽','')+'</span><span>'+rubles(maximum).replace(' ₽','')+'</span></div><div class="slider-recommendation"><img src="./assets/ai-marker.png" alt=""><span><img src="./assets/ai.svg" alt="Рекомендация нейросети">'+recommended+'</span></div></div><button class="primary" id="saveCustom">Применить</button></div>'+keyboardMarkup();
+      document.querySelector('.device').classList.add('keyboard-open');
+      updateManualInput();
     }
 
     catalog.addEventListener('click',event=>{
@@ -709,9 +766,15 @@
       renderCatalog();
     });
 
-    scroll.addEventListener('scroll',()=>{
-      stickyHeader.classList.toggle('visible',scroll.scrollTop>=262);
-    },{passive:true});
+    function updateHeader(){
+      const fixed=scroll.scrollTop>=262;
+      stickyHeader.classList.toggle('visible',fixed);
+      const image=document.querySelector('.system-status img');
+      const asset=fixed?'./assets/status-bar-plain.png':'./assets/status-bar.png';
+      if(image.getAttribute('src')!==asset)image.src=asset;
+    }
+
+    scroll.addEventListener('scroll',updateHeader,{passive:true});
 
     selectionOptions.addEventListener('click',event=>{
       const level=event.target.closest('[data-level]');
@@ -747,7 +810,7 @@
     });
 
     backdrop.addEventListener('click',event=>{
-      if(event.target===backdrop||event.target.closest('.close'))backdrop.classList.remove('visible');
+      if(event.target===backdrop||event.target.closest('.close'))closeSheet();
     });
 
     sheet.addEventListener('click',event=>{
@@ -756,19 +819,34 @@
         state.priceBand=Number(band.dataset.band);
         renderRateSheet(band.dataset.auto==='true');
       }
-      if(event.target.closest('[data-details]'))event.preventDefault();
+      if(event.target.closest('[data-details]'))renderRateSheet(false);
       if(event.target.id==='enableAuto'){
         state.auto=true;
         const control=document.getElementById('autoSwitch');
         control.classList.add('active');
         control.setAttribute('aria-checked','true');
         control.querySelector('img').src='./assets/switch-active.svg';
-        backdrop.classList.remove('visible');
+        closeSheet();
         showToast('Скидка для новых товаров включена');
       }
-      if(event.target.id==='clearAmount'){
+      const key=event.target.closest('[data-key]');
+      if(key){
+        const input=document.getElementById('amountInput');
+        const start=input.selectionStart??input.value.length;
+        const end=input.selectionEnd??start;
+        const deleting=key.dataset.key==='delete';
+        const from=deleting&&start===end?Math.max(0,start-1):start;
+        const digit=deleting?'':key.dataset.key;
+        input.value=(input.value.slice(0,from)+digit+input.value.slice(end)).slice(0,6);
+        const cursor=Math.min(from+digit.length,input.value.length);
+        input.focus({preventScroll:true});
+        input.setSelectionRange(cursor,cursor);
+        updateManualInput();
+      }
+      if(event.target.closest('#clearAmount')){
         const input=document.getElementById('amountInput');
         input.value='';
+        updateManualInput();
         input.focus({preventScroll:true});
       }
       if(event.target.id==='saveCustom'){
@@ -779,25 +857,26 @@
           const input=document.getElementById('amountInput');
           state.manualRatio=Math.min(maximum,Math.max(minimum,Number(input.value)||minimum))/item.price;
         }
-        backdrop.classList.remove('visible');
+        closeSheet();
         renderCatalog();
       }
     });
 
+    sheet.addEventListener('pointerdown',event=>{
+      if(event.target.closest('[data-key],#clearAmount'))event.preventDefault();
+    });
+
     sheet.addEventListener('input',event=>{
       if(!['amountInput','amountSlider'].includes(event.target.id))return;
-      const item=selectedItems()[0];
-      if(!item)return;
-      const minimum=minimumDiscount(item.price);
-      const maximum=maximumDiscount(item.price);
-      const value=Math.min(maximum,Math.max(minimum,Number(event.target.value)||minimum));
-      state.manualRatio=value/item.price;
       const input=document.getElementById('amountInput');
-      const slider=document.getElementById('amountSlider');
-      if(event.target.id==='amountSlider')input.value=value;
-      slider.value=value;
-      slider.style.setProperty('--progress',(value-minimum)/(maximum-minimum)*100+'%');
-      if(event.target.id==='amountSlider')requestAnimationFrame(()=>input.focus({preventScroll:true}));
+      if(event.target.id==='amountSlider')input.value=event.target.value;
+      else input.value=input.value.replace(/[^0-9]/g,'').slice(0,6);
+      updateManualInput();
+    });
+
+    sheet.addEventListener('keydown',event=>{
+      if(event.key==='Enter'&&event.target.id==='amountInput')document.getElementById('saveCustom').click();
+      if(event.key==='Escape')closeSheet();
     });
 
     variantToggle.addEventListener('click',event=>{
