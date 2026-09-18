@@ -272,12 +272,14 @@
     .slider-recommendation>img{position:absolute;left:var(--recommendation);top:0;transform:translateX(-50%);width:16px;height:16px}
     .slider-recommendation span{position:absolute;top:16px;left:clamp(58px,var(--recommendation),calc(100% - 60px));transform:translateX(-50%);display:flex;align-items:center;gap:3px;font-size:13px;line-height:16px;color:var(--secondary)}
     .slider-recommendation span img{width:12px;height:16px}
-    .slider-product-marker{position:absolute;z-index:4;top:5px;left:var(--marker);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;width:max-content;min-width:42px}
-    .slider-product-marker[hidden]{display:none}
-    .slider-product-dot{width:5px;height:5px;border-radius:50%;background:#141414}
-    .slider-product-images{display:flex;justify-content:center}
-    .slider-product-images img{width:24px;height:24px;border:1.5px solid #fff;border-radius:6px;object-fit:cover;background:#fff}
-    .slider-product-images img+img{margin-left:-10px}
+    .slider-product-range{position:absolute;z-index:4;inset:7px 0 auto;height:32px;pointer-events:none}
+    .slider-product-range[hidden]{display:none}
+    .slider-product-line{position:absolute;top:0;left:var(--range-start);width:max(2px,calc(var(--range-end) - var(--range-start)));height:2px;border-radius:32px;background:#141414}
+    .slider-product-images{position:absolute;top:8px;left:clamp(var(--marker-half),var(--range-center),calc(100% - var(--marker-half)));transform:translateX(-50%);display:flex;justify-content:center}
+    .slider-product-images img,.slider-product-counter{width:24px;height:24px;border:1.5px solid #fff;border-radius:6px;background:#e6e6e6}
+    .slider-product-images img{object-fit:cover}
+    .slider-product-images>*+*{margin-left:-10px}
+    .slider-product-counter{display:grid;place-items:center;font-size:11px;line-height:14px;color:#000}
     .custom-sheet .primary{position:absolute;left:10px;right:10px;top:104px;width:355px;background:#111;color:#fff;margin:0}
     .custom-value{display:none}
     .numeric-keyboard{height:255px;background:#d4d6dc;padding:6px 6px 41px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,46px);gap:8px 6px}
@@ -734,9 +736,25 @@
       slider.value=value;
       slider.style.setProperty('--progress',(value-Number(slider.min))/(Number(slider.max)-Number(slider.min))*100+'%');
       const affected=selectedItems().filter(item=>item.minimum>value);
-      sheet.querySelectorAll('.slider-product-marker').forEach(marker=>{
-        marker.hidden=Number(marker.dataset.minimum)<=value;
-      });
+      const productRange=document.getElementById('sliderProductRange');
+      if(productRange){
+        productRange.hidden=!affected.length;
+        if(affected.length){
+          const sorted=[...affected].sort((first,second)=>first.minimum-second.minimum);
+          const min=Number(slider.min);
+          const scale=Number(slider.max)-min;
+          const start=(sorted[0].minimum-min)/scale*100;
+          const end=(sorted[sorted.length-1].minimum-min)/scale*100;
+          const visible=affected.length<=3?affected:affected.slice(0,2);
+          const rest=affected.length-visible.length;
+          const markerCount=visible.length+(rest?1:0);
+          productRange.style.setProperty('--range-start',start+'%');
+          productRange.style.setProperty('--range-end',end+'%');
+          productRange.style.setProperty('--range-center',(start+end)/2+'%');
+          productRange.style.setProperty('--marker-half',(markerCount*7+5)+'px');
+          productRange.querySelector('.slider-product-images').innerHTML=visible.map(item=>'<img src="'+item.image+'" alt="">').join('')+(rest?'<span class="slider-product-counter">'+rest+'</span>':'');
+        }
+      }
       const save=document.getElementById('saveCustom');
       if(save)save.textContent=affected.length?'Готово':'Применить';
       if(affected.length){
@@ -767,19 +785,8 @@
       const current=state.manualAmount??(items.length>1?400:(state.tab==='discounted'?state.applied.get(item.id):item.ai));
       const value=Math.min(maximum,Math.max(minimum,current));
       const progress=(value-minimum)/(maximum-minimum)*100;
-      const markerGroups=items.reduce((groups,selected)=>{
-        const group=groups.get(selected.minimum)??[];
-        group.push(selected);
-        groups.set(selected.minimum,group);
-        return groups;
-      },new Map());
-      const markers=[...markerGroups].map(([threshold,group])=>{
-        const position=Math.min(100,Math.max(0,(threshold-minimum)/(maximum-minimum)*100));
-        const images=group.map(selected=>'<img src="'+selected.image+'" alt="">').join('');
-        return '<span class="slider-product-marker" data-minimum="'+threshold+'" style="--marker:'+position+'%" hidden><span class="slider-product-dot"></span><span class="slider-product-images">'+images+'</span></span>';
-      }).join('');
       sheet.className='sheet custom-sheet';
-      sheet.innerHTML='<div class="manual-controls"><div class="manual-input-wrap"><input class="amount-input" id="amountInput" type="text" inputmode="none" pattern="[0-9]*" autocomplete="off" value="'+value+'" aria-label="Размер скидки"><span>₽</span><button class="clear-amount" id="clearAmount" aria-label="Очистить"><img src="./assets/clear-input.svg" alt=""></button></div><div class="slider-wrap"><input class="slider" id="amountSlider" aria-label="Скидка на доставку" type="range" step="50" min="'+minimum+'" max="'+maximum+'" value="'+value+'" style="--progress:'+progress+'%">'+markers+'<div class="slider-limits"><span>'+rubles(minimum).replace(' ₽','')+'</span><span>'+rubles(maximum).replace(' ₽','')+'</span></div></div><button class="primary" id="saveCustom">Применить</button></div>'+keyboardMarkup();
+      sheet.innerHTML='<div class="manual-controls"><div class="manual-input-wrap"><input class="amount-input" id="amountInput" type="text" inputmode="none" pattern="[0-9]*" autocomplete="off" value="'+value+'" aria-label="Размер скидки"><span>₽</span><button class="clear-amount" id="clearAmount" aria-label="Очистить"><img src="./assets/clear-input.svg" alt=""></button></div><div class="slider-wrap"><input class="slider" id="amountSlider" aria-label="Скидка на доставку" type="range" step="50" min="'+minimum+'" max="'+maximum+'" value="'+value+'" style="--progress:'+progress+'%"><span class="slider-product-range" id="sliderProductRange" hidden><span class="slider-product-line"></span><span class="slider-product-images"></span></span><div class="slider-limits"><span>'+rubles(minimum).replace(' ₽','')+'</span><span>'+rubles(maximum).replace(' ₽','')+'</span></div></div><button class="primary" id="saveCustom">Применить</button></div>'+keyboardMarkup();
       document.querySelector('.device').classList.add('keyboard-open');
       updateManualInput();
     }
