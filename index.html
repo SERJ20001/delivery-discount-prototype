@@ -58,8 +58,8 @@
     .scroll{height:100%;overflow-y:auto;overscroll-behavior:none;padding-bottom:62px;scrollbar-width:none}
     .app.has-selection .scroll{padding-bottom:190px}
     .scroll::-webkit-scrollbar,.chips-row::-webkit-scrollbar{display:none}
-    .hero{position:relative;height:308px;border-radius:0 0 28px 28px;overflow:hidden;transition:height .2s ease}
-    .hero.auto-enabled{height:354px}
+    .hero{position:relative;height:264px;border-radius:0 0 28px 28px;overflow:hidden;transition:height .2s ease}
+    .hero.auto-enabled{height:310px}
     .hero-background{position:absolute;inset:0;background:radial-gradient(ellipse 300px 283px at 80% 20%,rgba(217,252,199,1),rgba(217,252,199,0) 100%),radial-gradient(ellipse 225px 212px at 0 100%,rgba(239,230,253,1),rgba(239,230,253,0) 100%),#edf0fe}
     .back{position:absolute;z-index:5;top:0;left:2px;width:48px;height:48px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer}
     .back img{width:24px;height:24px}
@@ -86,7 +86,7 @@
     .metric span{display:block;font-size:13px;line-height:16px;color:var(--secondary)}
     .help{position:absolute;right:0;top:0;width:28px;height:28px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
     .help img{width:16px;height:16px}
-    .auto-row{position:absolute;z-index:3;left:12px;right:12px;top:300px;height:42px;border-radius:16px;background:#fff;display:flex;align-items:center;padding:0 12px 0 14px;gap:8px}
+    .auto-row{position:absolute;z-index:3;left:12px;right:12px;top:256px;height:42px;border-radius:16px;background:#fff;display:flex;align-items:center;padding:0 12px 0 14px;gap:8px}
     .auto-row[hidden]{display:none}
     .auto-row>span{font-size:13px;line-height:16px}
     .auto-row .help{position:static;margin-left:auto}
@@ -197,16 +197,18 @@
     .prototype-stage{height:734px;flex:none}
     .desktop .system-status{padding:0}
     .desktop .system-home{display:flex}
-    .hero{height:308px}
-    .hero.auto-enabled{height:354px}
+    .hero{height:264px}
+    .hero.auto-enabled{height:310px}
     .metrics.metrics-data{grid-template-columns:125px 125px 93px}
     .metrics-data .metric{padding:10px 12px 12px;height:80px;min-width:0}
     .metrics-data .metric strong{display:flex;align-items:center;gap:3px;font-size:18px}
     .metrics-data .metric strong img{width:16px;height:16px}
     .metrics-data .metric span{font-size:13px;line-height:16px}
     .metric-action{border:0;cursor:pointer;text-align:left}
-    .metric-action img{position:absolute;top:13px;left:12px;width:15px;height:15px}
-    .metric-action span{position:absolute;top:36px;left:12px;right:12px}
+    .metric-action-icon{position:absolute;top:9px;left:12px;width:21px;height:21px;display:flex;align-items:center}
+    .metric-action-icon span{width:15px;height:15px;border-radius:27px;background:#141414;display:grid;place-items:center}
+    .metric-action-icon img{width:9px;height:13px;display:block}
+    .metric-action-label{position:absolute;top:36px;left:12px;right:12px}
     .auto-arrow{width:32px;height:42px;margin-left:auto;margin-right:-12px;border:0;background:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
     .auto-arrow img{width:8px;height:16px}
     .product{transition:opacity .22s ease,transform .22s ease,max-height .22s ease,min-height .22s ease,padding .22s ease}
@@ -385,7 +387,9 @@
     const discount=(item,level)=>{
       if(state.manualAmount!==null)return Math.min(item.maximum,Math.max(item.minimum,state.manualAmount));
       if(level==='ai')return item.ai;
-      const amounts={minimum:100,great:300,strong:400};
+      const amounts=state.selected.size>1
+        ?{minimum:400,great:500,strong:600}
+        :{minimum:100,great:300,strong:400};
       return Math.min(item.maximum,Math.max(item.minimum,amounts[level]??item.ai));
     };
     const eligibleItems=()=>allItems.filter(item=>!state.applied.has(item.id));
@@ -429,7 +433,7 @@
       './assets/close.svg','./assets/ellipse29603.svg','./assets/ellipse29604.svg',
       './assets/ellipse3438.svg','./assets/help.svg','./assets/help1.svg','./assets/icon.svg',
       './assets/icon2.svg','./assets/icon3.svg','./assets/icon4.svg','./assets/image1.png',
-      './assets/metrics-action.png','./assets/metrics-eye.png','./assets/metrics-heart.png',
+      './assets/metrics-arrow.svg','./assets/metrics-eye.png','./assets/metrics-heart.png',
       './assets/plant-box.png','./assets/product-bedding-carrots.png',
       './assets/product-bedding-ocean.png','./assets/product-bedding-turquoise.png',
       './assets/product-diesel.png','./assets/product-lamp-kitchen.png',
@@ -460,7 +464,7 @@
     }
 
     function productMarkup(item,selected,applied){
-      const badge=applied??selectedDiscount(item);
+      const badge=selected?selectedDiscount(item):applied;
       const image=applied&&item.appliedImage?item.appliedImage:item.image;
       return '<article class="product" data-id="'+item.id+'"><img class="product-image" src="'+image+'" alt=""><span class="product-check">'+checkButton(selected,selected?'Снять выбор':'Выбрать товар')+'</span><div class="product-body"><div class="product-price">'+rubles(item.price)+(badge?'<span class="discount-badge"><img src="./assets/icon2.svg" alt="">Скидка '+rubles(badge)+'</span>':'')+'</div><div class="product-title">'+item.title+'</div></div></article>';
     }
@@ -501,7 +505,8 @@
       selectAllFooter.classList.toggle('hidden',items.length>0||state.tab!=='eligible');
       if(!items.length)return;
       selectionOptions.classList.toggle('multiple',items.length>1);
-      selectionCount.innerHTML=items.length+' '+productWord(items.length)+(state.tab==='eligible'?'<span class="selection-ai">· Совет ИИ <img src="./assets/ai-spark.svg" alt=""></span>':'');
+      const aiSelected=state.tab==='eligible'&&state.selectionLevel==='ai'&&state.manualAmount===null;
+      selectionCount.innerHTML=items.length+' '+productWord(items.length)+(aiSelected?'<span class="selection-ai">· Совет ИИ <img src="./assets/ai-spark.svg" alt=""></span>':'');
       const applyButton=document.getElementById('applyDiscount');
       applyButton.textContent=state.tab==='eligible'?'Применить':'Удалить скидку';
       applyButton.classList.toggle('secondary',state.tab==='discounted');
@@ -528,7 +533,7 @@
     function renderHeroMetrics(){
       heroMetrics.classList.toggle('metrics-data',state.metrics);
       if(state.metrics){
-        heroMetrics.innerHTML='<div class="metric"><strong>+86 <img src="./assets/metrics-heart.svg" alt=""></strong><span>Добавлений<br>в избранное</span></div><div class="metric"><strong>+120 <img src="./assets/metrics-eye.svg" alt=""></strong><span>Количество<br>просмотров</span></div><button class="metric metric-action" data-sheet="metrics"><img src="./assets/metrics-action.png" alt=""><span>Как мы это считаем</span></button>';
+        heroMetrics.innerHTML='<div class="metric"><strong>+86 <img src="./assets/metrics-heart.svg" alt=""></strong><span>Добавлений<br>в избранное</span></div><div class="metric"><strong>+120 <img src="./assets/metrics-eye.svg" alt=""></strong><span>Количество<br>просмотров</span></div><button class="metric metric-action" data-sheet="metrics"><span class="metric-action-icon"><span><img src="./assets/metrics-arrow.svg" alt=""></span></span><span class="metric-action-label">Как мы это считаем</span></button>';
       }else{
         heroMetrics.innerHTML='<div class="metric"><strong>x2,5</strong><span>Растет скорость продажи</span></div><div class="metric"><strong>x3</strong><span>Растёт количество покупателей</span></div>';
       }
@@ -540,6 +545,7 @@
     function renderAutoState(){
       autoRow.hidden=!state.autoAvailable;
       hero.classList.toggle('auto-enabled',state.autoAvailable);
+      hero.style.height=state.autoAvailable?'310px':'264px';
       autoSwitch.classList.toggle('active',state.auto);
       autoSwitch.setAttribute('aria-checked',String(state.auto));
       autoSwitch.querySelector('img').src=state.auto?'./assets/switch-active.svg':'./assets/switch-inactive.svg';
@@ -809,7 +815,7 @@
     });
 
     function updateHeader(){
-      const fixed=scroll.scrollTop>=262;
+      const fixed=scroll.scrollTop>=218;
       stickyHeader.classList.toggle('visible',fixed);
       const image=document.querySelector('.system-status img');
       const asset=fixed?'./assets/status-bar-plain.png':'./assets/status-bar.png';
@@ -824,9 +830,17 @@
       if(level){
         state.selectionLevel=level.dataset.level;
         state.manualAmount=null;
+        if(state.selectionLevel!=='ai'){
+          clearTimeout(toastTimer);
+          toast.classList.remove('visible');
+        }
         renderCatalog();
       }
-      if(sheetButton)openSheet(sheetButton.dataset.sheet);
+      if(sheetButton){
+        clearTimeout(toastTimer);
+        toast.classList.remove('visible');
+        openSheet(sheetButton.dataset.sheet);
+      }
     });
 
     document.getElementById('applyDiscount').addEventListener('click',async()=>{
