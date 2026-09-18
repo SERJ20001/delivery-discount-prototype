@@ -171,7 +171,8 @@
     .slider::-moz-range-progress{height:2px;background:#000}
     .slider::-moz-range-thumb{width:16px;height:16px;border:0;border-radius:50%;background:#000}
     .slider-limits{display:flex;justify-content:space-between;color:var(--secondary);font-size:13px}
-    .toast{position:absolute;z-index:60;left:20px;right:20px;bottom:18px;background:#141414;color:#fff;border-radius:24px;padding:16px 44px 16px 20px;text-align:left;font-size:15px;line-height:20px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.2s}
+    .toast{position:absolute;z-index:60;left:20px;right:20px;bottom:18px;background:#141414;color:#fff;border-radius:28px;padding:16px 44px 16px 20px;text-align:left;font-size:15px;line-height:20px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.2s}
+    .toast>span{display:block;padding-bottom:2px}
     .toast.visible{opacity:1;transform:none;pointer-events:auto}
     .toast-close{position:absolute;right:12px;top:12px;width:28px;height:28px;border:0;background:transparent;padding:4px;cursor:pointer}
     .toast-close img{width:14px;height:20px;display:block}
@@ -256,13 +257,13 @@
     .metrics-step-visual{width:48px;height:48px;border-radius:14px;background:var(--control)}
     .metrics-step p{font-size:15px;line-height:20px}
     .sheet.custom-sheet{height:auto;max-height:100%;border-radius:24px 24px 0 0;padding:0;overflow:hidden}
-    .manual-controls{height:167px;position:relative;padding:10px}
-    .manual-input-wrap{height:52px;border-radius:16px;background:var(--control);display:flex;align-items:center;gap:6px;padding:0 18px;position:relative;font-size:15px;font-weight:500}
+    .manual-controls{height:168px;position:relative}
+    .manual-input-wrap{position:absolute;left:10px;right:10px;top:12px;height:52px;border-radius:16px;background:var(--control);display:flex;align-items:center;gap:6px;padding:0 18px;font-size:15px;font-weight:500}
     .amount-input{position:static;width:3ch;max-width:250px;height:100%;padding:0;opacity:1;border:0;background:transparent;font-size:15px;line-height:20px;font-weight:500;outline:0}
     .amount-input::-webkit-inner-spin-button{display:none}
     .clear-amount{position:absolute;right:8px;top:5px;width:30px;height:40px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer}
     .clear-amount img{width:14px;height:20px}
-    .slider-wrap{position:relative;margin:-9px 24px 0;height:35px}
+    .slider-wrap{position:absolute;left:34px;right:34px;top:55px;height:35px;margin:0}
     .custom-sheet .slider{position:relative;z-index:2;display:block;width:100%;margin:0;height:16px;cursor:pointer}
     .custom-sheet .slider-limits{padding:0;margin:0;line-height:16px}
     .slider::-webkit-slider-thumb{background:transparent url(./assets/slider-thumb.svg) center/16px 16px no-repeat}
@@ -271,10 +272,13 @@
     .slider-recommendation>img{position:absolute;left:var(--recommendation);top:0;transform:translateX(-50%);width:16px;height:16px}
     .slider-recommendation span{position:absolute;top:16px;left:clamp(58px,var(--recommendation),calc(100% - 60px));transform:translateX(-50%);display:flex;align-items:center;gap:3px;font-size:13px;line-height:16px;color:var(--secondary)}
     .slider-recommendation span img{width:12px;height:16px}
-    .slider-product-marker{position:absolute;z-index:4;top:-8px;left:var(--marker);transform:translateX(-50%);display:flex}
+    .slider-product-marker{position:absolute;z-index:4;top:5px;left:var(--marker);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;width:max-content;min-width:42px}
     .slider-product-marker[hidden]{display:none}
-    .slider-product-marker img{width:24px;height:24px;border:1.5px solid #fff;border-radius:50%;object-fit:cover;background:#fff}
-    .custom-sheet .primary{position:absolute;left:10px;right:10px;bottom:13px;width:355px;background:#111;color:#fff;margin:0}
+    .slider-product-dot{width:5px;height:5px;border-radius:50%;background:#141414}
+    .slider-product-images{display:flex;justify-content:center}
+    .slider-product-images img{width:24px;height:24px;border:1.5px solid #fff;border-radius:6px;object-fit:cover;background:#fff}
+    .slider-product-images img+img{margin-left:-10px}
+    .custom-sheet .primary{position:absolute;left:10px;right:10px;top:104px;width:355px;background:#111;color:#fff;margin:0}
     .custom-value{display:none}
     .numeric-keyboard{height:255px;background:#d4d6dc;padding:6px 6px 41px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,46px);gap:8px 6px}
     .numeric-key{padding:0;border:0;border-radius:5px;background:#fcfcfe;box-shadow:0 1px 0 rgba(0,0,0,.35);font-family:inherit;color:#000;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:25px;line-height:29px}
@@ -282,6 +286,8 @@
     .numeric-key.delete-key{background:transparent;box-shadow:none}
     .numeric-key img{width:23px;height:17px}
     .numeric-key:active{background:#bcc0c8}
+    .device.keyboard-open .backdrop{background:rgba(0,0,0,.56)}
+    .device.keyboard-open .system-status::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.56)}
     .device.keyboard-open .system-home{background:#d4d6dc}
     @media (max-height:680px){.variant-toggle{height:38px}.viewer-shell{gap:6px}}
     @media (min-width:376px){.phone .app{box-shadow:none}}
@@ -761,9 +767,16 @@
       const current=state.manualAmount??(items.length>1?400:(state.tab==='discounted'?state.applied.get(item.id):item.ai));
       const value=Math.min(maximum,Math.max(minimum,current));
       const progress=(value-minimum)/(maximum-minimum)*100;
-      const markers=items.map(selected=>{
-        const position=Math.min(100,Math.max(0,(selected.minimum-minimum)/(maximum-minimum)*100));
-        return '<span class="slider-product-marker" data-minimum="'+selected.minimum+'" style="--marker:'+position+'%" hidden><img src="'+selected.image+'" alt=""></span>';
+      const markerGroups=items.reduce((groups,selected)=>{
+        const group=groups.get(selected.minimum)??[];
+        group.push(selected);
+        groups.set(selected.minimum,group);
+        return groups;
+      },new Map());
+      const markers=[...markerGroups].map(([threshold,group])=>{
+        const position=Math.min(100,Math.max(0,(threshold-minimum)/(maximum-minimum)*100));
+        const images=group.map(selected=>'<img src="'+selected.image+'" alt="">').join('');
+        return '<span class="slider-product-marker" data-minimum="'+threshold+'" style="--marker:'+position+'%" hidden><span class="slider-product-dot"></span><span class="slider-product-images">'+images+'</span></span>';
       }).join('');
       sheet.className='sheet custom-sheet';
       sheet.innerHTML='<div class="manual-controls"><div class="manual-input-wrap"><input class="amount-input" id="amountInput" type="text" inputmode="none" pattern="[0-9]*" autocomplete="off" value="'+value+'" aria-label="Размер скидки"><span>₽</span><button class="clear-amount" id="clearAmount" aria-label="Очистить"><img src="./assets/clear-input.svg" alt=""></button></div><div class="slider-wrap"><input class="slider" id="amountSlider" aria-label="Скидка на доставку" type="range" step="50" min="'+minimum+'" max="'+maximum+'" value="'+value+'" style="--progress:'+progress+'%">'+markers+'<div class="slider-limits"><span>'+rubles(minimum).replace(' ₽','')+'</span><span>'+rubles(maximum).replace(' ₽','')+'</span></div></div><button class="primary" id="saveCustom">Применить</button></div>'+keyboardMarkup();
