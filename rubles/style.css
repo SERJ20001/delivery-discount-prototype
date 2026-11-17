@@ -48,6 +48,8 @@ button,input{font:inherit;color:inherit}button{cursor:pointer;border:0;-webkit-t
 
 #app:has(#catalog-header:not([hidden])) .toast{top:154px}
 .editor-discount.placeholder{color:#757575}
+#screen:not([inert]) .catalog{interactivity:auto}
+#screen[inert] .catalog{interactivity:inert}
 .motion-ghost{pointer-events:none!important}.editor.is-moving .editor-stack{overflow:visible}
 @media(prefers-reduced-motion:no-preference){
   .primary,.chip,.count-pill,.discount-chip,.product-select,.back{transition:background-color 160ms ease,box-shadow 180ms ease,transform 160ms cubic-bezier(.22,.8,.25,1)}

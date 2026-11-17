@@ -16,6 +16,53 @@ const settle = async page => {
   await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 };
 const click = (page, selector) => page.locator(selector).first().evaluate(element => element.click());
+async function checkConnectedSelection(page, touch, label) {
+  const press = selector => touch ? page.locator(selector).tap() : page.locator(selector).click();
+  await page.goto(new URL('#delivery', origin).href);
+  await page.locator('#loading').waitFor({ state: 'hidden' });
+  await settle(page);
+  await press('[data-category="0"]');
+  await press('[data-category="1"]');
+  await press('#ai-caption');
+  await press('#understood');
+  await press('[data-range="higher"]');
+  await press('#apply');
+  await press('[data-tab="discounted"]');
+  await settle(page);
+  check(`${label}: actual 3 eligible and 8 connected after bulk apply`, await page.locator('#eligible-count').innerText() === '3' && await page.locator('#discounted-count').innerText() === '8');
+  check(`${label}: connected catalog is interactive after tab animation`, await page.locator('#catalog').evaluate(element => getComputedStyle(element).getPropertyValue('interactivity') === 'auto'));
+  await press('[data-id="salomon"] .product-check');
+  await settle(page);
+  check(`${label}: connected checkbox selects item without changing saved amount`, await page.locator('[data-select="salomon"]').getAttribute('aria-pressed') === 'true' && await page.locator('#selection-count').innerText() === '1 товар' && await page.locator('.discount-chip[data-edit="salomon"]').innerText() === '700 ₽');
+  await page.screenshot({ path: `${output}/connected-selection-${label}.png` });
+  await press('[data-id="salomon"] .product-title');
+  await settle(page);
+  check(`${label}: connected title can clear selection`, await page.locator('[data-select="salomon"]').getAttribute('aria-pressed') === 'false');
+  await press('[data-id="salomon"] .product-photo');
+  await settle(page);
+  check(`${label}: connected photo can select item`, await page.locator('[data-select="salomon"]').getAttribute('aria-pressed') === 'true');
+  await press('.discount-chip[data-edit="salomon"]');
+  await settle(page);
+  check(`${label}: open editor keeps background genuinely inert`, await page.evaluate(() => {
+    const catalog = document.querySelector('#catalog');
+    const row = document.querySelector('[data-select="salomon-grey"]');
+    const bounds = row.getBoundingClientRect();
+    return document.querySelector('#screen').inert && getComputedStyle(catalog).getPropertyValue('interactivity') === 'inert' && !document.elementFromPoint(bounds.left + 10, bounds.top + 10)?.closest('[data-select]');
+  }));
+  await page.locator('#amount').fill('250');
+  await press('#done');
+  await settle(page);
+  await press('[data-id="salomon"] .product-check');
+  await settle(page);
+  check(`${label}: saved item remains selectable after individual save`, await page.locator('[data-select="salomon"]').getAttribute('aria-pressed') === 'true' && await page.locator('.discount-chip[data-edit="salomon"]').innerText() === '250 ₽');
+  await press('.discount-chip[data-edit="salomon"]');
+  await page.locator('#amount').fill('300');
+  await page.keyboard.press('Escape');
+  await settle(page);
+  await press('[data-id="salomon-grey"] .product-check');
+  await settle(page);
+  check(`${label}: another saved item selects after editor cancel`, await page.locator('[data-select="salomon-grey"]').getAttribute('aria-pressed') === 'true' && await page.locator('#selection-count').innerText() === '2 товара');
+}
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 try {
   const page = await browser.newPage({ viewport: { width: 375, height: 850 }, reducedMotion: 'no-preference' });
@@ -178,6 +225,12 @@ try {
   await settle(mobile);
   check('touch cancel restores selection with no duplicate card', await mobile.locator('[data-id="salomon"]').isVisible() && await mobile.locator('.motion-ghost').count() === 0 && await mobile.locator('#selection-count').innerText() === '1 товар');
   await mobile.close();
+  for (const touch of [false, true]) {
+    const connected = await browser.newPage({ viewport: { width: touch ? 390 : 1280, height: touch ? 844 : 900 }, isMobile: touch, hasTouch: touch, reducedMotion: 'no-preference' });
+    connected.on('pageerror', error => errors.push(error.message));
+    await checkConnectedSelection(connected, touch, touch ? 'touch' : 'desktop');
+    await connected.close();
+  }
   check('no browser or HTTP errors', errors.length === 0);
   await writeFile(`${output}/report.json`, JSON.stringify({ origin, build, checks, errors, gaps, frames }, null, 2) + '\n');
   console.log(JSON.stringify({ passed: checks.length, errors, revision: build.revision }));
