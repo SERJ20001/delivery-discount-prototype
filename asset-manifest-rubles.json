@@ -2081,7 +2081,7 @@
       "file": "assets/current/38777.svg",
       "path": "rubles/assets/current/38777.svg",
       "kind": "image",
-      "used": true,
+      "used": false,
       "review": "agent-checked",
       "sizeBytes": 411,
       "sha256": "a15e32fbce9feec779c407e2ee274b38dc49f65e595e487baeb9958ede3f7b47",

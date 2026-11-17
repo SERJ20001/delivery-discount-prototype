@@ -52,7 +52,7 @@
     ],
     "higherRangeRule": "map base amount position in 100..600 to 600..1200; round nearest 50; clamp to product limits",
     "unavailableRange": "clamp each amount to product bounds; actual item amounts and range labels; no lower notice",
-    "labels": "actual minimum and maximum of per-item results after bounds for current selected products; equal amounts show a single value"
+    "labels": "active range uses retained per-item previews; alternative range shows results of explicitly choosing that range"
   },
   "single": {
     "presets": [
@@ -81,7 +81,8 @@
         "Удалить скидку"
       ]
     },
-    "limits": "tooltip above input: minimum or maximum; preserve typed value in preview; Apply and Save clamp to original product bounds without errors"
+    "limits": "tooltip above input: minimum or maximum; preserve typed value in preview; Apply and Save clamp to original product bounds without errors",
+    "clear": "no clear-cross buttons; use keyboard deletion"
   },
   "bulkApply": "save chosen results and clear selection; retain current tab and scroll; toast at top below navigation; hide eligible tab and show discounted only if none eligible remain",
   "savedDiscounts": "select saved items without changing amounts; individual editing and removal available; bulk range replaces chosen saved amounts only after Apply",
@@ -96,5 +97,6 @@
     "deterministic recommendation demo; no AI backend",
     "physical phones and Safari untested",
     "public browser blocked previously; publication verified with hosting MCP"
-  ]
+  ],
+  "selection": "preserve per-item previews when selected, deselected or reselected; never recalculate existing selected amounts based on count"
 }

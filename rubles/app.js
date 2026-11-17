@@ -2,7 +2,7 @@ const { limits } = DiscountModel;
 const asset = name => `assets/current/${name}`;
 const allItems = categories.flatMap(category => category.items);
 const inventory = [...allItems, previousItem];
-const state = { tab: 'eligible', selected: new Set(), applied: new Map([[previousItem.id, calculateAmount(previousItem, 300)]]), range: 'recommended', singleAmount: null, editor: null };
+const state = { tab: 'eligible', selected: new Set(), applied: new Map([[previousItem.id, calculateAmount(previousItem, 300)]]), range: 'recommended', previews: new Map(), editor: null };
 const money = value => `${new Intl.NumberFormat('ru-RU').format(value)} ₽`;
 const word = count => count % 10 === 1 && count % 100 !== 11 ? 'товар' : count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 12 || count % 100 > 14) ? 'товара' : 'товаров';
 const $ = selector => document.querySelector(selector);
@@ -29,7 +29,7 @@ function rangeAmount(item, range = state.range) {
 }
 
 function rangeLabel(items, range) {
-  const amounts = items.map(item => rangeAmount(item, range).amount);
+  const amounts = items.map(item => state.range === range ? preview(item).amount : rangeAmount(item, range).amount);
   const minimum = Math.min(...amounts);
   const maximum = Math.max(...amounts);
   return minimum === maximum ? money(minimum) : `${new Intl.NumberFormat('ru-RU').format(minimum)} – ${money(maximum)}`;
@@ -40,12 +40,7 @@ function singlePresets(item) {
 }
 
 function preview(item) {
-  if (!state.selected.has(item.id)) return state.applied.get(item.id);
-  if (chosenItems().length === 1) {
-    if (state.singleAmount !== null) return calculateAmount(item, state.singleAmount);
-    return state.tab === 'discounted' ? state.applied.get(item.id) : calculateAmount(item, singlePresets(item)[0]);
-  }
-  return state.tab === 'discounted' && state.range === 'saved' ? state.applied.get(item.id) : rangeAmount(item);
+  return state.selected.has(item.id) ? state.previews.get(item.id) : state.applied.get(item.id);
 }
 
 function checkbox(selected) {
@@ -130,9 +125,13 @@ function updateCategoryNavigation() {
     if (selected && changed) button.parentElement.scrollTo({ left: button.offsetLeft - 68 });
   });
 }
-function resetPreview() {
-  state.singleAmount = null;
-  if (state.tab === 'discounted') state.range = 'saved';
+function prepareSelection() {
+  const chosen = chosenItems();
+  for (const item of chosen) {
+    if (state.previews.has(item.id)) continue;
+    const result = state.applied.get(item.id) ?? (chosen.length === 1 ? calculateAmount(item, singlePresets(item)[0]) : rangeAmount(item));
+    state.previews.set(item.id, result);
+  }
 }
 
 function openEditor(itemId, custom = false) {
@@ -146,7 +145,7 @@ function openEditor(itemId, custom = false) {
   setEditorProductVisibility();
   $('#screen').inert = true;
   $('#editor').hidden = false;
-  $('#editor-options').innerHTML = `<div class="editor-presets" id="editor-presets"></div><label class="custom-input"><input id="amount" type="text" inputmode="none" autocomplete="off" maxlength="6" aria-label="Своя сумма скидки в рублях"><span id="amount-suffix">₽</span></label><button type="button" id="clear" aria-label="Очистить сумму"><img src="${asset('38777.svg')}" alt=""></button><div id="limit-tooltip" class="limit-tooltip" role="tooltip" aria-live="polite" hidden></div>`;
+  $('#editor-options').innerHTML = `<div class="editor-presets" id="editor-presets"></div><label class="custom-input"><input id="amount" type="text" inputmode="none" autocomplete="off" maxlength="6" aria-label="Своя сумма скидки в рублях"><span id="amount-suffix">₽</span></label><div id="limit-tooltip" class="limit-tooltip" role="tooltip" aria-live="polite" hidden></div>`;
   updateEditor();
   if (custom) { $('#amount').focus({ preventScroll: true }); $('#amount').select(); }
   else $('#done').focus({ preventScroll: true });
@@ -163,7 +162,6 @@ function updateEditor() {
   input.placeholder = mode === 'custom' ? `от ${bounds.minimum} ₽` : 'Своя';
   $('.custom-input').classList.toggle('active', mode === 'custom');
   $('#amount-suffix').hidden = mode !== 'custom' || !draft;
-  $('#clear').hidden = mode !== 'custom' || !draft;
   const connected = state.applied.has(item.id);
   $('#done').disabled = !result;
   $('#done').textContent = connected ? 'Сохранить' : 'Применить скидку';
@@ -204,7 +202,8 @@ function commitEditor() {
   const updating = state.applied.has(item.id);
   state.applied.set(item.id, result);
   state.selected.delete(item.id);
-  resetPreview();
+  state.previews.delete(item.id);
+  prepareSelection();
   closeEditor();
   render();
   $('#select-all').focus({ preventScroll: true });
@@ -228,13 +227,13 @@ $('#catalog').addEventListener('click', event => {
     const checked = items.every(item => state.selected.has(item.id));
     items.forEach(item => checked ? state.selected.delete(item.id) : state.selected.add(item.id));
   }
-  resetPreview();
+  prepareSelection();
   render();
 });
 $('#select-all').addEventListener('click', () => {
   const items = visibleItems();
   state.selected = new Set(chosenItems().length === items.length ? [] : items.map(item => item.id));
-  resetPreview();
+  prepareSelection();
   render();
 });
 $('#options').addEventListener('click', event => {
@@ -242,14 +241,19 @@ $('#options').addEventListener('click', event => {
   if (edit) return openEditor(edit.dataset.edit, true);
   const range = event.target.closest('[data-range]');
   const amount = event.target.closest('[data-amount]');
-  if (range) state.range = range.dataset.range;
-  if (amount) state.singleAmount = Number(amount.dataset.amount);
+  if (range) {
+    state.range = range.dataset.range;
+    chosenItems().forEach(item => state.previews.set(item.id, rangeAmount(item)));
+  }
+  if (amount) {
+    const item = chosenItems()[0];
+    state.previews.set(item.id, calculateAmount(item, amount.dataset.amount));
+  }
   render();
 });
 $('#editor-options').addEventListener('click', event => {
   const preset = event.target.closest('[data-editor-amount]');
   if (preset) { state.editor.mode = 'preset'; state.editor.draft = preset.dataset.editorAmount; updateEditor(); }
-  else if (event.target.closest('#clear')) { setDraft(''); $('#amount').focus(); }
 });
 $('#editor-options').addEventListener('focusin', event => {
   if (event.target.id !== 'amount' || state.editor.mode === 'custom') return;
@@ -264,6 +268,7 @@ $('#cancel-area').addEventListener('click', closeEditor);
 $('#remove-discount').addEventListener('click', () => {
   state.applied.delete(state.editor.item.id);
   state.selected.delete(state.editor.item.id);
+  state.previews.delete(state.editor.item.id);
   closeEditor(); render();
   $('#select-all').focus({ preventScroll: true });
   notify('Удалили скидку на товар');
@@ -274,7 +279,8 @@ $('#apply').addEventListener('click', () => {
   const removing = state.tab === 'discounted' && chosen.every(item => preview(item).amount === state.applied.get(item.id).amount);
   if (removing) chosen.forEach(item => state.applied.delete(item.id));
   else chosen.map(item => [item.id, preview(item)]).forEach(([id, result]) => state.applied.set(id, result));
-  state.selected.clear(); resetPreview(); render();
+  chosen.forEach(item => state.previews.delete(item.id));
+  state.selected.clear(); render();
   notify(`${removing ? 'Удалили' : 'Применили'} скидку для ${chosen.length} ${chosen.length % 10 === 1 && chosen.length % 100 !== 11 ? 'товара' : 'товаров'}`);
 });
 $('#ai-caption').addEventListener('click', () => {
@@ -287,7 +293,7 @@ $('#close-info').addEventListener('click', closeInfo);
 $('#understood').addEventListener('click', closeInfo);
 $('#info').addEventListener('click', event => { if (event.target === $('#info')) closeInfo(); });
 document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
-  state.tab = button.dataset.tab; state.selected.clear(); state.range = state.tab === 'eligible' ? 'recommended' : 'saved'; state.singleAmount = null;
+  state.tab = button.dataset.tab; state.selected.clear(); state.range = state.tab === 'eligible' ? 'recommended' : 'saved'; state.previews.clear();
   $('#scroll').scrollTop = 0; render();
 }));
 document.querySelectorAll('.back').forEach(button => button.addEventListener('click', EntryScreen.back));
@@ -341,7 +347,7 @@ function enterDelivery() {
   state.tab = 'eligible';
   state.selected.clear();
   state.range = 'recommended';
-  state.singleAmount = null;
+  state.previews.clear();
   $('#scroll').scrollTop = 0;
   render();
   $('#screen .back').focus({ preventScroll: true });
@@ -376,7 +382,7 @@ async function start() {
   try {
     render();
     const paths = new Set([...document.querySelectorAll('img')].map(image => image.getAttribute('src')));
-    ['86592.svg', '38777.svg', 'c8762.svg', 'a31ca.svg'].forEach(name => paths.add(asset(name)));
+    ['86592.svg', 'c8762.svg', 'a31ca.svg'].forEach(name => paths.add(asset(name)));
     paths.add('assets/checkbox-inactive.svg');
     [previousItem, ...allItems].forEach(item => item.images.forEach(image => paths.add(asset(image))));
     await Promise.race([

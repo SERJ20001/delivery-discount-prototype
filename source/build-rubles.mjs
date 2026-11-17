@@ -61,6 +61,6 @@ for (const file of Object.keys(bundledAssets)) {
   throw new Error(`Missing asset provenance: ${file}`);
 }
 manifest.section = '3542:50077';
-const retired = ['64152.svg', '8bc71.svg', '96048.svg', 'e157a.svg', 'e6ee2.svg', 'ec93c.svg', 'cffe9.png', 'd83ab.png'];
+const retired = ['38777.svg', '64152.svg', '8bc71.svg', '96048.svg', 'e157a.svg', 'e6ee2.svg', 'ec93c.svg', 'cffe9.png', 'd83ab.png'];
 for (const entry of manifest.assets) if (retired.some(name => entry.file === 'assets/current/' + name)) entry.used = false;
 await writeFile(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
