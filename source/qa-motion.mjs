@@ -90,11 +90,14 @@ try {
     const animations = editor.getAnimations({ subtree: true });
     const rectAt = progress => {
       animations.forEach(animation => { animation.pause(); animation.currentTime = animation.effect.getTiming().duration * progress; });
-      return { top: card.getBoundingClientRect().top, opacity: getComputedStyle(editor.querySelector('.editor-panel')).opacity };
+      const panel = editor.querySelector('.editor-panel').getBoundingClientRect();
+      const keyboard = editor.querySelector('.keyboard').getBoundingClientRect();
+      return { top: card.getBoundingClientRect().top, panelTop: panel.top, panelBottom: panel.bottom, keyboardTop: keyboard.top, keyboardBottom: keyboard.bottom };
     };
-    return { start: rectAt(0), middle: rectAt(.45), end: rectAt(.99), count: animations.length };
+    return { start: rectAt(0), middle: rectAt(.45), end: rectAt(.99), samples: [0, .25, .5, .75, 1].map(rectAt), appBottom: document.querySelector('#app').getBoundingClientRect().bottom, count: animations.length };
   });
-  check('editor moves continuously through intermediate state', frames.count >= 4 && Math.abs(frames.start.top - frames.end.top) > 10 && Math.abs(frames.middle.top - frames.start.top) > 1 && Number(frames.middle.opacity) > 0 && Number(frames.middle.opacity) < 1);
+  check('editor moves continuously through intermediate state', frames.count >= 3 && Math.abs(frames.start.top - frames.end.top) > 10 && Math.abs(frames.middle.top - frames.start.top) > 1);
+  check('panel and keyboard enter as one block from below viewport', frames.start.panelTop >= frames.appBottom - 1 && frames.middle.panelTop < frames.start.panelTop && frames.middle.panelTop > frames.end.panelTop && frames.samples.every(frame => Math.abs(frame.panelBottom - frame.keyboardTop) < 1));
   await page.evaluate(() => document.querySelector('#editor').getAnimations({ subtree: true }).forEach(animation => { animation.currentTime = animation.effect.getTiming().duration * .45; }));
   await page.screenshot({ path: `${output}/editor-middle.png` });
   await page.evaluate(() => document.querySelector('#editor').getAnimations({ subtree: true }).forEach(animation => animation.play()));
@@ -121,6 +124,21 @@ try {
   await page.screenshot({ path: `${output}/currency-gap.png` });
   await click(page, '#cancel-edit');
   check('closing editor uses inert visual overlay', await page.locator('.motion-ghost.editor').evaluate(element => element.inert && element.getAttribute('aria-hidden') === 'true') && await page.locator('#editor').isHidden());
+  const closing = await page.evaluate(() => {
+    const ghost = document.querySelector('.motion-ghost.editor');
+    const animations = ghost.getAnimations({ subtree: true });
+    const samples = [0, .25, .5, .75, 1].map(progress => {
+      animations.forEach(animation => { animation.pause(); animation.currentTime = animation.effect.getTiming().duration * progress; });
+      const panel = ghost.querySelector('.editor-panel').getBoundingClientRect();
+      const keyboard = ghost.querySelector('.keyboard').getBoundingClientRect();
+      return { panelTop: panel.top, panelBottom: panel.bottom, keyboardTop: keyboard.top };
+    });
+    animations.forEach(animation => { animation.currentTime = animation.effect.getTiming().duration * .45; });
+    return { samples, appBottom: document.querySelector('#app').getBoundingClientRect().bottom };
+  });
+  check('panel and keyboard exit together without gaps', closing.samples.every(frame => Math.abs(frame.panelBottom - frame.keyboardTop) < 1) && closing.samples.at(-1).panelTop >= closing.appBottom - 1);
+  await page.screenshot({ path: `${output}/editor-closing-middle.png` });
+  await page.evaluate(() => document.querySelector('.motion-ghost.editor').getAnimations({ subtree: true }).forEach(animation => animation.play()));
   await settle(page);
   check('cancel restores one visible row and original amount', await page.locator('[data-id="salomon-grey"]').isVisible() && await page.locator('.discount-chip[data-edit="salomon-grey"]').innerText() === '300 ₽');
   await click(page, '.discount-chip[data-edit="salomon"]');
@@ -189,8 +207,9 @@ try {
     check(`motion finishes within app at ${width}x${height}`, await page.evaluate(() => {
       const app = document.querySelector('#app').getBoundingClientRect();
       const stack = document.querySelector('.editor-stack').getBoundingClientRect();
+      const panel = document.querySelector('.editor-panel').getBoundingClientRect();
       const keyboard = document.querySelector('#keyboard').getBoundingClientRect();
-      return stack.top >= app.top && Math.abs(stack.bottom - keyboard.top) < 1 && Math.abs(keyboard.bottom - app.bottom) < 1 && document.body.scrollWidth === innerWidth;
+      return stack.top >= app.top && Math.abs(stack.bottom - app.bottom) < 1 && Math.abs(panel.bottom - keyboard.top) < 1 && Math.abs(keyboard.bottom - app.bottom) < 1 && document.body.scrollWidth === innerWidth;
     }));
     await page.keyboard.press('Escape');
     await settle(page);
@@ -232,6 +251,6 @@ try {
     await connected.close();
   }
   check('no browser or HTTP errors', errors.length === 0);
-  await writeFile(`${output}/report.json`, JSON.stringify({ origin, build, checks, errors, gaps, frames }, null, 2) + '\n');
+  await writeFile(`${output}/report.json`, JSON.stringify({ origin, build, checks, errors, gaps, frames, closing }, null, 2) + '\n');
   console.log(JSON.stringify({ passed: checks.length, errors, revision: build.revision }));
 } finally { await browser.close(); }

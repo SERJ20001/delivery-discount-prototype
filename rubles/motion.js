@@ -121,8 +121,7 @@ const PrototypeMotion = (() => {
     editor.classList.add('is-moving');
     const opening = [
       animate(editor, [{ backgroundColor: '#0000' }, { backgroundColor: '#0009' }], { duration: 260 }),
-      animate(editor.querySelector('.editor-panel'), [{ opacity: 0, transform: 'translateY(30px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 300 }),
-      animate(editor.querySelector('.keyboard'), [{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }], { duration: 300 }),
+      animate(editor.querySelector('.editor-controls'), [{ transform: 'translateY(100%)' }, { transform: 'translateY(0)' }], { duration: 320 }),
       moveCard(editor.querySelector('.editor-product'), origin)
     ];
     Promise.all(opening).then(() => { if (run === editorRun) editor.classList.remove('is-moving'); });
@@ -151,8 +150,7 @@ const PrototypeMotion = (() => {
     }
     const closing = [
       animate(ghost, [{ backgroundColor: getComputedStyle(ghost).backgroundColor }, { backgroundColor: '#0000' }], { duration: 220, persist: true }),
-      animate(ghost.querySelector('.editor-panel'), [{ opacity: getComputedStyle(ghost.querySelector('.editor-panel')).opacity, transform: getComputedStyle(ghost.querySelector('.editor-panel')).transform }, { opacity: 0, transform: 'translateY(30px)' }], { duration: 220, persist: true }),
-      animate(ghost.querySelector('.keyboard'), [{ transform: getComputedStyle(ghost.querySelector('.keyboard')).transform }, { transform: 'translateY(100%)' }], { duration: 250, persist: true }),
+      animate(ghost.querySelector('.editor-controls'), [{ transform: getComputedStyle(ghost.querySelector('.editor-controls')).transform }, { transform: 'translateY(100%)' }], { duration: 280, persist: true }),
       animate(card, target ? [{ transform, paddingLeft: getComputedStyle(card).paddingLeft, paddingRight: getComputedStyle(card).paddingRight }, { transform: matrix.toString(), paddingLeft: '0px', paddingRight: '0px' }] : [{ opacity: 1, transform }, { opacity: 0, transform: 'translateY(-6px)' }], { duration: 260, persist: true })
     ];
     Promise.all(closing).then(() => removeGhost(ghost));

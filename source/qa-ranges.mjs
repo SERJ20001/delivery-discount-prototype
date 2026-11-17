@@ -144,8 +144,9 @@ try {
     check(`editor and keypad fit ${width}x${height}`, await page.evaluate(() => {
       const app = document.querySelector('#app').getBoundingClientRect();
       const stack = document.querySelector('.editor-stack').getBoundingClientRect();
+      const panel = document.querySelector('.editor-panel').getBoundingClientRect();
       const keyboard = document.querySelector('#keyboard').getBoundingClientRect();
-      return stack.top >= app.top && Math.abs(stack.bottom - keyboard.top) < 1 && Math.abs(keyboard.bottom - app.bottom) < 1 && document.body.scrollWidth === innerWidth;
+      return stack.top >= app.top && Math.abs(stack.bottom - app.bottom) < 1 && Math.abs(panel.bottom - keyboard.top) < 1 && Math.abs(keyboard.bottom - app.bottom) < 1 && document.body.scrollWidth === innerWidth;
     }));
     await page.locator('#amount').fill('');
     await page.locator('[data-key="8"]').click();
