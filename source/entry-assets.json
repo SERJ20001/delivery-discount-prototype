@@ -1,0 +1,372 @@
+[
+  {
+    "file": "d820f.svg",
+    "nodeId": "112:44080",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "active ads tab",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "04d44.svg",
+    "nodeId": "112:44083",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "search tab",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "49e3d.svg",
+    "nodeId": "112:44086",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "favorites tab",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "9d79e.svg",
+    "nodeId": "112:44092",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "messages tab",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "c8f7b.svg",
+    "nodeId": "20:2041",
+    "slot": [
+      10,
+      20
+    ],
+    "dimensions": [
+      10.0,
+      20.0
+    ],
+    "logical": [
+      10.0,
+      20.0
+    ],
+    "physical": [
+      10.0,
+      20.0
+    ],
+    "role": "card chevron",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "6d2a9.svg",
+    "nodeId": "141:52053",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "promo code icon",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "2fe66.svg",
+    "nodeId": "141:51969",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "delivery discount icon",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "5b2a2.png",
+    "nodeId": "141:51916",
+    "slot": [
+      48,
+      48
+    ],
+    "dimensions": [
+      468,
+      428
+    ],
+    "logical": [
+      468,
+      428
+    ],
+    "physical": [
+      468,
+      428
+    ],
+    "role": "collage rear photo",
+    "representation": "original-export",
+    "scale": 1,
+    "fit": "object-fit: cover; centered inside 48x48 slot; source image is unmodified"
+  },
+  {
+    "file": "256ee.png",
+    "nodeId": "141:51917",
+    "slot": [
+      48,
+      48
+    ],
+    "dimensions": [
+      498,
+      492
+    ],
+    "logical": [
+      498,
+      492
+    ],
+    "physical": [
+      498,
+      492
+    ],
+    "role": "collage front photo",
+    "representation": "original-export",
+    "scale": 1,
+    "fit": "object-fit: cover; centered inside 48x48 slot; source image is unmodified"
+  },
+  {
+    "file": "66aba.png",
+    "nodeId": "I141:52234;7598:605074;75792:18313;75792:18304;4175:15123",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      48,
+      48
+    ],
+    "logical": [
+      48,
+      48
+    ],
+    "physical": [
+      48,
+      48
+    ],
+    "role": "profile avatar",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "fad7b.svg",
+    "nodeId": "I141:52223;249:91120",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "sale icon",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "96c18.svg",
+    "nodeId": "I141:52225;847:76354",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "bundle icon",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "6e1df.svg",
+    "nodeId": "I141:52233;61:17824;33457:20516",
+    "slot": [
+      375,
+      40
+    ],
+    "dimensions": [
+      375.0,
+      40.0
+    ],
+    "logical": [
+      375.0,
+      40.0
+    ],
+    "physical": [
+      375.0,
+      40.0
+    ],
+    "role": "status background",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "f11f2.svg",
+    "nodeId": "I141:52233;61:17824;33457:20518",
+    "slot": [
+      325.83,
+      12
+    ],
+    "dimensions": [
+      325.83,
+      12.0
+    ],
+    "logical": [
+      325.83,
+      12.0
+    ],
+    "physical": [
+      325.83,
+      12.0
+    ],
+    "role": "status icons",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "ce4ec.svg",
+    "nodeId": "I141:52233;61:17826;61:17862",
+    "slot": [
+      24,
+      24
+    ],
+    "dimensions": [
+      24.0,
+      24.0
+    ],
+    "logical": [
+      24.0,
+      24.0
+    ],
+    "physical": [
+      24.0,
+      24.0
+    ],
+    "role": "header back icon",
+    "representation": "original-export",
+    "scale": 1
+  },
+  {
+    "file": "4f6ef.svg",
+    "nodeId": "I141:52234;7598:605186",
+    "slot": [
+      375,
+      36
+    ],
+    "dimensions": [
+      375.0,
+      36.0
+    ],
+    "logical": [
+      375.0,
+      36.0
+    ],
+    "physical": [
+      375.0,
+      36.0
+    ],
+    "role": "home indicator",
+    "representation": "original-export",
+    "scale": 1
+  }
+]

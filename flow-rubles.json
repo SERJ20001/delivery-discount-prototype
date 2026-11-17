@@ -1,0 +1,100 @@
+{
+  "source": {
+    "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+    "section": "3542:50077",
+    "screens": [
+      "3544:54726",
+      "3544:55785",
+      "3544:56476",
+      "3544:57445",
+      "3544:61209",
+      "3544:58360",
+      "3544:59897"
+    ],
+    "limitTooltip": "3550:63012"
+  },
+  "entry": {
+    "fileKey": "CymBugfH4yExnxXn14xaRv",
+    "nodeId": "141:52212",
+    "path": "rubles/index.html",
+    "qaHash": "#delivery"
+  },
+  "defaults": {
+    "selected": 0,
+    "eligible": 10,
+    "applied": 1,
+    "mode": "recommended",
+    "persistence": "memory only; reload resets"
+  },
+  "bulk": {
+    "minimumSelection": 2,
+    "ranges": [
+      [
+        100,
+        600
+      ],
+      [
+        600,
+        1200
+      ]
+    ],
+    "recommendedAmounts": [
+      200,
+      300,
+      400,
+      150,
+      500,
+      500,
+      400,
+      600,
+      600,
+      400
+    ],
+    "higherRangeRule": "map base amount position in 100..600 to 600..1200; round nearest 50; clamp to product limits",
+    "unavailableRange": "clamp each amount to product bounds; actual item amounts and range labels; no lower notice",
+    "labels": "actual minimum and maximum of per-item results after bounds for current selected products; equal amounts show a single value"
+  },
+  "single": {
+    "presets": [
+      100,
+      200,
+      300
+    ],
+    "bounds": "clamp presets to actual item limits and remove duplicate amounts",
+    "custom": "0..999999 whole rubles; empty disables Apply; out-of-bounds including zero remain applicable and clamp on confirmation"
+  },
+  "individualEditor": {
+    "open": "pencil on item discount or single-selection custom chip; temporarily extract item from background list into sheet",
+    "preview": "same product identity and price as catalog; exact amount matching preset/input and limits",
+    "apply": "save immediately; remove item from eligible list and selection; retain other selected items and range",
+    "cancel": "discard draft and keep previous amount; Escape or backdrop also cancel; restore original item row, selection and scroll",
+    "delete": "explicit separate action for existing discounts",
+    "keyboard": "embedded numeric keypad; no group slider",
+    "empty": "gray discount placeholder before input; primary text color for valid numeric preview",
+    "buttons": {
+      "new": [
+        "Применить скидку",
+        "Не применять"
+      ],
+      "connected": [
+        "Сохранить",
+        "Удалить скидку"
+      ]
+    },
+    "limits": "tooltip above input: minimum or maximum; preserve typed value in preview; Apply and Save clamp to original product bounds without errors"
+  },
+  "bulkApply": "save chosen results and clear selection; retain current tab and scroll; toast at top below navigation; hide eligible tab and show discounted only if none eligible remain",
+  "savedDiscounts": "select saved items without changing amounts; individual editing and removal available; bulk range replaces chosen saved amounts only after Apply",
+  "limitsSource": "percent/discount-model.js; unchanged",
+  "realData": "all counts derive from inventory, applied map and selection; landing inventory total11; prices and preview values share catalog source",
+  "fonts": [
+    "Avito Sans Text 400",
+    "Avito Sans Text 500",
+    "Avito Sans Text 700"
+  ],
+  "limitations": [
+    "deterministic recommendation demo; no AI backend",
+    "physical phones and Safari untested",
+    "public browser blocked previously; publication verified with hosting MCP"
+  ]
+}

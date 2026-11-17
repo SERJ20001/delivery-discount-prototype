@@ -1,0 +1,2142 @@
+{
+  "version": 1,
+  "figmaFile": "OaolVHaabrE8Nv9upVA0wD",
+  "section": "3542:50077",
+  "assets": [
+    {
+      "file": "assets/avito-sans-text-bold.woff2",
+      "sizeBytes": 28744,
+      "sha256": "3b6e643eae56f4ebf49e8e418da3272d561a11a5cc8eeaac86a6a3f41059af77",
+      "sourceNodes": [
+        "inherited:delivery-discount-prototype-viewer"
+      ],
+      "dimensions": null,
+      "id": "avito-sans-text-bold",
+      "path": "rubles/assets/avito-sans-text-bold.woff2",
+      "kind": "font",
+      "used": true,
+      "review": "agent-checked",
+      "family": "Avito Sans Text",
+      "source": {
+        "project": "delivery-discount-prototype-viewer",
+        "path": "assets/avito-sans-text-bold.woff2"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/avito-sans-text-medium.woff2",
+      "sizeBytes": 28464,
+      "sha256": "1b821fad87575ec6c86d50d1b8a2dfa1bdff07f769a1513ade33cc91522ad23c",
+      "sourceNodes": [
+        "inherited:delivery-discount-prototype-viewer"
+      ],
+      "dimensions": null,
+      "id": "avito-sans-text-medium",
+      "path": "rubles/assets/avito-sans-text-medium.woff2",
+      "kind": "font",
+      "used": true,
+      "review": "agent-checked",
+      "family": "Avito Sans Text",
+      "source": {
+        "project": "delivery-discount-prototype-viewer",
+        "path": "assets/avito-sans-text-medium.woff2"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/avito-sans-text-regular.woff2",
+      "sizeBytes": 28324,
+      "sha256": "ce9525f743b3b78db607d59af1143fafaaca6d7cc3884b619d53ebe7a27343d7",
+      "sourceNodes": [
+        "inherited:delivery-discount-prototype-viewer"
+      ],
+      "dimensions": null,
+      "id": "avito-sans-text-regular",
+      "path": "rubles/assets/avito-sans-text-regular.woff2",
+      "kind": "font",
+      "used": true,
+      "review": "agent-checked",
+      "family": "Avito Sans Text",
+      "source": {
+        "project": "delivery-discount-prototype-viewer",
+        "path": "assets/avito-sans-text-regular.woff2"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/checkbox-inactive.svg",
+      "sizeBytes": 283,
+      "sha256": "6da5285c9ee8e215880efa17f86d802bd367c5283dbc0003f4e3444e93efbc7b",
+      "sourceNodes": [
+        "inherited:delivery-discount-prototype-viewer"
+      ],
+      "dimensions": [
+        20,
+        21
+      ],
+      "id": "checkbox-inactive",
+      "path": "rubles/assets/checkbox-inactive.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        20,
+        21
+      ],
+      "physical": [
+        20,
+        21
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "delivery-discount-prototype-viewer",
+        "path": "assets/checkbox-inactive.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/51e78.png",
+      "sizeBytes": 697676,
+      "sha256": "c30a8dd8efb8c66b2b99daa925c405d4936d70e497bdb62b9f3ca4fa5e379321",
+      "sourceNodes": [
+        "3374:49832",
+        "3374:49865",
+        "3374:49898",
+        "3374:49934"
+      ],
+      "dimensions": [
+        848,
+        660
+      ],
+      "id": "51e78",
+      "path": "rubles/assets/current/51e78.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        848,
+        660
+      ],
+      "physical": [
+        848,
+        660
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49832"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "64152",
+      "path": "rubles/assets/current/64152.svg",
+      "file": "assets/current/64152.svg",
+      "sizeBytes": 395,
+      "sha256": "a161ab5b32f7ceff1c4245d59da9b0cfb114a56d89194ee5a347ec72a2dd7236",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        14,
+        20
+      ],
+      "physical": [
+        14,
+        20
+      ],
+      "dimensions": [
+        14,
+        20
+      ],
+      "scale": 1,
+      "kind": "image",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3277:46223"
+      },
+      "sourceNodes": [
+        "3277:46223"
+      ],
+      "representation": "original SVG",
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/7603d.png",
+      "sizeBytes": 198320,
+      "sha256": "a3dd8d691af8b6eb78d78043a70efaf47a98aeaef867cc392a3e611d4ffed140",
+      "sourceNodes": [
+        "3374:49898"
+      ],
+      "dimensions": [
+        322,
+        298
+      ],
+      "id": "7603d",
+      "path": "rubles/assets/current/7603d.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        322,
+        298
+      ],
+      "physical": [
+        322,
+        298
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49898"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/77eb1.png",
+      "sizeBytes": 225382,
+      "sha256": "0a1d50cf8967a55d0fa1c7ebe55b9ed9cec4007a02bbb00fed2b4f79ff5961b5",
+      "sourceNodes": [
+        "3374:50071"
+      ],
+      "dimensions": [
+        326,
+        368
+      ],
+      "id": "77eb1",
+      "path": "rubles/assets/current/77eb1.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        326,
+        368
+      ],
+      "physical": [
+        326,
+        368
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50071"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/7ea8d.png",
+      "sizeBytes": 223537,
+      "sha256": "f0e3e82c3d31f5204eb16220eeae6c7d7e7fa034147f8087497fe7115b5d30d0",
+      "sourceNodes": [
+        "3374:50030"
+      ],
+      "dimensions": [
+        580,
+        546
+      ],
+      "id": "7ea8d",
+      "path": "rubles/assets/current/7ea8d.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        580,
+        546
+      ],
+      "physical": [
+        580,
+        546
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50030"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/81bf5.png",
+      "sizeBytes": 345314,
+      "sha256": "72edb33a3947a3454de91d256651c3b99cae6fc61b181e673e763671e924ce01",
+      "sourceNodes": [
+        "3374:49998"
+      ],
+      "dimensions": [
+        456,
+        514
+      ],
+      "id": "81bf5",
+      "path": "rubles/assets/current/81bf5.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        456,
+        514
+      ],
+      "physical": [
+        456,
+        514
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49998"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/8bc71.svg",
+      "sizeBytes": 1051,
+      "sha256": "cc8722d09f51f1199bb1668c00cc37b7691571e146f2c046113431b54ff320cc",
+      "sourceNodes": [
+        "3374:49832",
+        "3374:49865",
+        "3374:49898",
+        "3374:49934",
+        "3374:49966",
+        "3374:49998",
+        "3374:50030",
+        "3374:50071",
+        "3374:50103",
+        "3374:50135"
+      ],
+      "dimensions": [
+        16,
+        16
+      ],
+      "id": "8bc71",
+      "path": "rubles/assets/current/8bc71.svg",
+      "kind": "image",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        16,
+        16
+      ],
+      "physical": [
+        16,
+        16
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49832"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "96048",
+      "path": "rubles/assets/current/96048.svg",
+      "file": "assets/current/96048.svg",
+      "sizeBytes": 624,
+      "sha256": "6e6f7c99821e26d9ecd39706f216fc93e9691a8bffcdce875a5960118e6dd9b0",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        14,
+        16
+      ],
+      "physical": [
+        14,
+        16
+      ],
+      "dimensions": [
+        14,
+        16
+      ],
+      "scale": 1,
+      "kind": "image",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3277:45753"
+      },
+      "sourceNodes": [
+        "3277:45753"
+      ],
+      "representation": "original SVG",
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/a4747.svg",
+      "sizeBytes": 534,
+      "sha256": "4d9d9026f55b38ce8f664af1819316dde3003c237f96884b9eff912d17f8b6fd",
+      "sourceNodes": [
+        "3374:50167"
+      ],
+      "dimensions": [
+        21,
+        21
+      ],
+      "id": "a4747",
+      "path": "rubles/assets/current/a4747.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        21,
+        21
+      ],
+      "physical": [
+        21,
+        21
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50167"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/ba80b.png",
+      "sizeBytes": 161236,
+      "sha256": "de6e45659ce1e1acb16c709fbcdbf21297fedd77552f6d217c8b9756e93ba540",
+      "sourceNodes": [
+        "3374:50103"
+      ],
+      "dimensions": [
+        298,
+        316
+      ],
+      "id": "ba80b",
+      "path": "rubles/assets/current/ba80b.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        298,
+        316
+      ],
+      "physical": [
+        298,
+        316
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50103"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "bbc80",
+      "path": "rubles/assets/current/bbc80.svg",
+      "file": "assets/current/bbc80.svg",
+      "sizeBytes": 1290,
+      "sha256": "57944dcc48b21cfe0bf3b56c03a224ae0abfe07f08e8643a25afd051b8b3cf51",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        117,
+        46
+      ],
+      "physical": [
+        117,
+        46
+      ],
+      "dimensions": [
+        117,
+        46
+      ],
+      "scale": 1,
+      "kind": "image",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3277:46219"
+      },
+      "sourceNodes": [
+        "3277:46219"
+      ],
+      "representation": "original SVG",
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/c318d.png",
+      "sizeBytes": 441989,
+      "sha256": "c0521bce4b8f1ca82df502a93e262471a69b9250d9431d634161605ccbcf936d",
+      "sourceNodes": [
+        "3374:49966"
+      ],
+      "dimensions": [
+        444,
+        544
+      ],
+      "id": "c318d",
+      "path": "rubles/assets/current/c318d.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        444,
+        544
+      ],
+      "physical": [
+        444,
+        544
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49966"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/c8762.svg",
+      "sizeBytes": 1616,
+      "sha256": "77c7b6e65aa58dec74cc23b9b6e384cfd07851b9d9d3eed8f6e377820c51dec3",
+      "sourceNodes": [
+        "3374:50167"
+      ],
+      "dimensions": [
+        12,
+        16
+      ],
+      "id": "c8762",
+      "path": "rubles/assets/current/c8762.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        12,
+        16
+      ],
+      "physical": [
+        12,
+        16
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50167"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/ce63d.png",
+      "sizeBytes": 237952,
+      "sha256": "5a55b6ebb8d7c4548e0ba8d82d1aa91871372c537714a44a095f2d0dd6aa268d",
+      "sourceNodes": [
+        "3374:49865"
+      ],
+      "dimensions": [
+        324,
+        370
+      ],
+      "id": "ce63d",
+      "path": "rubles/assets/current/ce63d.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        324,
+        370
+      ],
+      "physical": [
+        324,
+        370
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49865"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/d9ce7.png",
+      "sizeBytes": 2021793,
+      "sha256": "1bdd5e7c58d59e05e1d93c34af1b95899fec27bc7f0c47bafe7a560bdf4748af",
+      "sourceNodes": [
+        "3374:49832"
+      ],
+      "dimensions": [
+        1628,
+        1296
+      ],
+      "id": "d9ce7",
+      "path": "rubles/assets/current/d9ce7.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        1628,
+        1296
+      ],
+      "physical": [
+        1628,
+        1296
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49832"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "e157a",
+      "path": "rubles/assets/current/e157a.svg",
+      "file": "assets/current/e157a.svg",
+      "sizeBytes": 252,
+      "sha256": "c8f0ce27147e5ef8c2d60822ecdda0cca873ed3c9dab575106115b9d3bd8f2bb",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        16,
+        16
+      ],
+      "physical": [
+        16,
+        16
+      ],
+      "dimensions": [
+        16,
+        16
+      ],
+      "scale": 1,
+      "kind": "image",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3277:46227"
+      },
+      "sourceNodes": [
+        "3277:46227"
+      ],
+      "representation": "original SVG",
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/e6ee2.svg",
+      "sizeBytes": 301,
+      "sha256": "48d66975f05306469e1a1d16608770eecae65e4e69fffbdd660b5ad8a49326f5",
+      "sourceNodes": [
+        "3374:49832",
+        "3374:49865",
+        "3374:49898",
+        "3374:49934",
+        "3374:49966",
+        "3374:49998",
+        "3374:50030",
+        "3374:50071",
+        "3374:50103",
+        "3374:50135"
+      ],
+      "dimensions": [
+        10,
+        21
+      ],
+      "id": "e6ee2",
+      "path": "rubles/assets/current/e6ee2.svg",
+      "kind": "image",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        10,
+        21
+      ],
+      "physical": [
+        10,
+        21
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49832"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/e90cc.png",
+      "sizeBytes": 165034,
+      "sha256": "ce17141b0dc4bc75cab86228c4c2d41e9ce697250a49ba2f6e9627c3b1e8b4c7",
+      "sourceNodes": [
+        "3374:50135"
+      ],
+      "dimensions": [
+        326,
+        332
+      ],
+      "id": "e90cc",
+      "path": "rubles/assets/current/e90cc.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        326,
+        332
+      ],
+      "physical": [
+        326,
+        332
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50135"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/f2e61.png",
+      "sizeBytes": 669395,
+      "sha256": "783acf7081311dcf17142db7d3de0dfcb4f4be5327637cc35010cc9abd6dc67b",
+      "sourceNodes": [
+        "3374:49832",
+        "3374:49865",
+        "3374:49898",
+        "3374:49934",
+        "3374:49966",
+        "3374:49998",
+        "3374:50030"
+      ],
+      "dimensions": [
+        498,
+        490
+      ],
+      "id": "f2e61",
+      "path": "rubles/assets/current/f2e61.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        498,
+        490
+      ],
+      "physical": [
+        498,
+        490
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:49832"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/f84ba.svg",
+      "sizeBytes": 1356,
+      "sha256": "f9fd2dffb9c6e77c9bed13243609ebf6850c500f003710d943549fc92afdeaf1",
+      "sourceNodes": [
+        "3374:50167"
+      ],
+      "dimensions": [
+        12,
+        16
+      ],
+      "id": "f84ba",
+      "path": "rubles/assets/current/f84ba.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        12,
+        16
+      ],
+      "physical": [
+        12,
+        16
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3374:50167"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/16c6d.svg",
+      "sizeBytes": 4654,
+      "sha256": "4e16eb834ca3982df8d63dcbc1c9efbe5999323c0120550df479a4cdd9c0e678",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        326,
+        12
+      ],
+      "id": "16c6d",
+      "path": "rubles/assets/current/16c6d.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        325.83,
+        12
+      ],
+      "physical": [
+        325.83,
+        12
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/16c6d.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/171be.svg",
+      "sizeBytes": 731,
+      "sha256": "69e34cd7f8eaeee19e68bc75048821c0d7c4533451e74216cce93855a8b8601a",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        86,
+        99
+      ],
+      "id": "171be",
+      "path": "rubles/assets/current/171be.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        86.1322,
+        99.3229
+      ],
+      "physical": [
+        86.1322,
+        99.3229
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/171be.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/1adf4.png",
+      "sizeBytes": 401533,
+      "sha256": "772352e1723bd172acb5f7f602457a188c7bffdcb642e5097895a99f5e5c2ae6",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "id": "1adf4",
+      "path": "rubles/assets/current/1adf4.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        1024,
+        1024
+      ],
+      "physical": [
+        1024,
+        1024
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/1adf4.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/228b7.svg",
+      "sizeBytes": 432,
+      "sha256": "800d8ce2fd10a8610a63da1288a6dd83c18db202dd7f28c36484d2a537d54754",
+      "sourceNodes": [
+        "3374:51052"
+      ],
+      "dimensions": [
+        20,
+        29
+      ],
+      "id": "228b7",
+      "path": "rubles/assets/current/228b7.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        20,
+        28.5714
+      ],
+      "physical": [
+        20,
+        28.5714
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/228b7.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/2c656.svg",
+      "sizeBytes": 722,
+      "sha256": "b7c6a0c1670ce8b8c22cfa360cb78202f439dba35512d76fa8be22d5f4518276",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        148,
+        148
+      ],
+      "id": "2c656",
+      "path": "rubles/assets/current/2c656.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        148.07,
+        148.07
+      ],
+      "physical": [
+        148.07,
+        148.07
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/2c656.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "35e2b",
+      "file": "assets/current/35e2b.svg",
+      "path": "rubles/assets/current/35e2b.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 4603,
+      "sha256": "c058050ac8d4afa25aa0073b5bb040ff1e998771b5d2baa24ece362a8daa0a09",
+      "dimensions": [
+        325.83,
+        12
+      ],
+      "logical": [
+        325.83,
+        12
+      ],
+      "physical": [
+        325.83,
+        12
+      ],
+      "scale": 1,
+      "slot": [
+        325.83,
+        12
+      ],
+      "role": "compact header status bar",
+      "sourceNodes": [
+        "3403:234995"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/35e2b.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "385c1",
+      "file": "assets/current/385c1.png",
+      "path": "rubles/assets/current/385c1.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 93480,
+      "sha256": "b18df6daf036e26159c8f546392a5ae132c1b49042596db9bd9b116b7d72711b",
+      "dimensions": [
+        278,
+        272
+      ],
+      "logical": [
+        278,
+        272
+      ],
+      "physical": [
+        278,
+        272
+      ],
+      "scale": 1,
+      "slot": [
+        48,
+        48
+      ],
+      "role": "AI explanation row 4",
+      "sourceNodes": [
+        "3403:232817"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/385c1.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "3d0bd",
+      "file": "assets/current/3d0bd.png",
+      "path": "rubles/assets/current/3d0bd.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 93922,
+      "sha256": "90c4ce118381f608db4a6c692fbe527d260ae2ca54007158ac2cf263370ced41",
+      "dimensions": [
+        282,
+        282
+      ],
+      "logical": [
+        282,
+        282
+      ],
+      "physical": [
+        282,
+        282
+      ],
+      "scale": 1,
+      "slot": [
+        48,
+        48
+      ],
+      "role": "AI explanation row 3",
+      "sourceNodes": [
+        "3403:232816"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/3d0bd.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "44895",
+      "file": "assets/current/44895.png",
+      "path": "rubles/assets/current/44895.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 151093,
+      "sha256": "c9e9de4a2edc0f749e32ef43e9675fe728397586c322ee65c4685b3bce169f7b",
+      "dimensions": [
+        358,
+        356
+      ],
+      "logical": [
+        358,
+        356
+      ],
+      "physical": [
+        358,
+        356
+      ],
+      "scale": 1,
+      "slot": [
+        48,
+        48
+      ],
+      "role": "AI explanation row 1",
+      "sourceNodes": [
+        "3403:232814"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/44895.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "92bb0",
+      "file": "assets/current/92bb0.png",
+      "path": "rubles/assets/current/92bb0.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 199500,
+      "sha256": "98450fc58830ae13a1761a0f1eb04dcccb6932940b102fdd937f916fe9213341",
+      "dimensions": [
+        320,
+        312
+      ],
+      "logical": [
+        320,
+        312
+      ],
+      "physical": [
+        320,
+        312
+      ],
+      "scale": 1,
+      "slot": [
+        80,
+        80
+      ],
+      "role": "discounted Lime product photo",
+      "sourceNodes": [
+        "3403:233027"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/92bb0.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "a31ca",
+      "file": "assets/current/a31ca.svg",
+      "path": "rubles/assets/current/a31ca.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 781,
+      "sha256": "8ff411a46aca0640bac78c75462b45c01c238a8caf2b178bc6d8557f87d10a3c",
+      "dimensions": [
+        48,
+        48
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "physical": [
+        48,
+        48
+      ],
+      "scale": 1,
+      "slot": [
+        48,
+        48
+      ],
+      "role": "AI illustration mask",
+      "sourceNodes": [
+        "3403:232814"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/a31ca.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/c4cf7.png",
+      "sizeBytes": 514559,
+      "sha256": "ef394ade49d9a716a59ed7bcf66d120ebbe745ad62af6d7b84fbe8c12dc9ff3c",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "id": "c4cf7",
+      "path": "rubles/assets/current/c4cf7.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        1024,
+        1024
+      ],
+      "physical": [
+        1024,
+        1024
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/c4cf7.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/cb77b.png",
+      "sizeBytes": 516083,
+      "sha256": "a92e7de6babcdd3b410d556b4d9f9dc00b63f51c67e74f741b7962050769ed07",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        1024,
+        687
+      ],
+      "id": "cb77b",
+      "path": "rubles/assets/current/cb77b.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        1024,
+        687
+      ],
+      "physical": [
+        1024,
+        687
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/cb77b.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/cffe9.png",
+      "sizeBytes": 110069,
+      "sha256": "63aa822ffaf4476659153ad8e816ac33a2ce8d58ec7cff37c779748258f5e5a0",
+      "sourceNodes": [
+        "3374:51052"
+      ],
+      "dimensions": [
+        314,
+        294
+      ],
+      "id": "cffe9",
+      "path": "rubles/assets/current/cffe9.png",
+      "kind": "image",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        314,
+        294
+      ],
+      "physical": [
+        314,
+        294
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/cffe9.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "d4af4",
+      "file": "assets/current/d4af4.png",
+      "path": "rubles/assets/current/d4af4.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 50678,
+      "sha256": "4a37d43e43d110c084132093cda0cafc673989f0d3e8e63b204478c710c8a2ba",
+      "dimensions": [
+        200,
+        194
+      ],
+      "logical": [
+        200,
+        194
+      ],
+      "physical": [
+        200,
+        194
+      ],
+      "scale": 1,
+      "slot": [
+        48,
+        48
+      ],
+      "role": "AI explanation row 2",
+      "sourceNodes": [
+        "3403:232815"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/d4af4.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/d83ab.png",
+      "sizeBytes": 99399,
+      "sha256": "d483e35e80a679ab67ec0af6d9abb3ab9ce9da0801fde235783043d12747c1d2",
+      "sourceNodes": [
+        "3374:51052"
+      ],
+      "dimensions": [
+        330,
+        334
+      ],
+      "id": "d83ab",
+      "path": "rubles/assets/current/d83ab.png",
+      "kind": "image",
+      "used": false,
+      "review": "agent-checked",
+      "logical": [
+        330,
+        334
+      ],
+      "physical": [
+        330,
+        334
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/d83ab.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/dc2fe.svg",
+      "sizeBytes": 729,
+      "sha256": "103aaf98cb56cb69d53062890b3df0b75dd0ba73b246efd14171bf326ff0677f",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        97,
+        114
+      ],
+      "id": "dc2fe",
+      "path": "rubles/assets/current/dc2fe.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        96.791,
+        113.956
+      ],
+      "physical": [
+        96.791,
+        113.956
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/dc2fe.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "id": "ec93c",
+      "file": "assets/current/ec93c.svg",
+      "path": "rubles/assets/current/ec93c.svg",
+      "kind": "image",
+      "used": false,
+      "review": "agent-checked",
+      "sizeBytes": 896,
+      "sha256": "4cb753cc057910fe7db641f0008ca6415e4901a17729741a43306a8e416ff7d2",
+      "dimensions": [
+        19.9969,
+        19.9969
+      ],
+      "logical": [
+        19.9969,
+        19.9969
+      ],
+      "physical": [
+        19.9969,
+        19.9969
+      ],
+      "scale": 1,
+      "slot": [
+        19.997,
+        19.997
+      ],
+      "role": "metric tag icon",
+      "sourceNodes": [
+        "3374:46342"
+      ],
+      "source": {
+        "project": "percent",
+        "path": "assets/current/ec93c.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/f178c.svg",
+      "sizeBytes": 361,
+      "sha256": "0bb9d3c78c2af5341a7e49fa58e5663fdd4641462fff35289889428843689b40",
+      "sourceNodes": [
+        "3374:50191"
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "id": "f178c",
+      "path": "rubles/assets/current/f178c.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/f178c.svg"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/current/promo-badge.png",
+      "sizeBytes": 180432,
+      "sha256": "f56803f836f246665d2ea308798d4b6872f706c280be52c2f618d627e7d08366",
+      "sourceNodes": [
+        "3374:50197"
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "id": "promo-badge",
+      "path": "rubles/assets/current/promo-badge.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "logical": [
+        512,
+        512
+      ],
+      "physical": [
+        512,
+        512
+      ],
+      "scale": 1,
+      "representation": "original fill or SVG; logical dimensions describe intrinsic source; display slots are defined in CSS",
+      "source": {
+        "project": "percent",
+        "path": "assets/current/promo-badge.png"
+      },
+      "designContext": "3277:45656"
+    },
+    {
+      "file": "assets/entry/d820f.svg",
+      "nodeId": "112:44080",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "active ads tab",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-d820f",
+      "path": "rubles/assets/entry/d820f.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 1652,
+      "sha256": "4642a133e3595d2ee21f3db84d8390372582ba5fcb0a50bb1c7defac29599603",
+      "sourceNodes": [
+        "112:44080"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "112:44080"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/04d44.svg",
+      "nodeId": "112:44083",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "search tab",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-04d44",
+      "path": "rubles/assets/entry/04d44.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 1200,
+      "sha256": "839b10389c5cf4b8ef695a51b1d0e5942973ca4c7a7bd2c49e9d2fd309d81a11",
+      "sourceNodes": [
+        "112:44083"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "112:44083"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/49e3d.svg",
+      "nodeId": "112:44086",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "favorites tab",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-49e3d",
+      "path": "rubles/assets/entry/49e3d.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 625,
+      "sha256": "9113fc745d5f96940b2f670a9e168bab125871a2f6d4d99534b649397955e80a",
+      "sourceNodes": [
+        "112:44086"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "112:44086"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/9d79e.svg",
+      "nodeId": "112:44092",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "messages tab",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-9d79e",
+      "path": "rubles/assets/entry/9d79e.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 759,
+      "sha256": "d12dbd20cc803cf1efe01b2293c828b616b841d6b21565597a3fb3b4048586c4",
+      "sourceNodes": [
+        "112:44092"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "112:44092"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/c8f7b.svg",
+      "nodeId": "20:2041",
+      "slot": [
+        10,
+        20
+      ],
+      "dimensions": [
+        10,
+        20
+      ],
+      "logical": [
+        10,
+        20
+      ],
+      "physical": [
+        10,
+        20
+      ],
+      "role": "card chevron",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-c8f7b",
+      "path": "rubles/assets/entry/c8f7b.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 365,
+      "sha256": "1d5d177c1a1c9a53071db0a5580412e78d6bff62cffee923b6984a49f4b0317c",
+      "sourceNodes": [
+        "20:2041"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "20:2041"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/6d2a9.svg",
+      "nodeId": "141:52053",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "promo code icon",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-6d2a9",
+      "path": "rubles/assets/entry/6d2a9.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 2760,
+      "sha256": "6455ac2ae10aef49e755582c9cad2b12c913215db8c438c1f7ea1305423debc6",
+      "sourceNodes": [
+        "141:52053"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "141:52053"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/2fe66.svg",
+      "nodeId": "141:51969",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "delivery discount icon",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-2fe66",
+      "path": "rubles/assets/entry/2fe66.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 3650,
+      "sha256": "5edbfd442b48c37270e2d3204ebce7143b30a4cf0a7b13784abac1d07b173a1a",
+      "sourceNodes": [
+        "141:51969"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "141:51969"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/5b2a2.png",
+      "nodeId": "141:51916",
+      "slot": [
+        48,
+        48
+      ],
+      "dimensions": [
+        468,
+        428
+      ],
+      "logical": [
+        468,
+        428
+      ],
+      "physical": [
+        468,
+        428
+      ],
+      "role": "collage rear photo",
+      "representation": "original-export",
+      "scale": 1,
+      "fit": "object-fit: cover; centered inside 48x48 slot; source image is unmodified",
+      "id": "entry-5b2a2",
+      "path": "rubles/assets/entry/5b2a2.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 314801,
+      "sha256": "d6aeeaf173b887802ebf2093efc41cc01777c0459faa61226cc3b6c976fa96b2",
+      "sourceNodes": [
+        "141:51916"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "141:51916"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/256ee.png",
+      "nodeId": "141:51917",
+      "slot": [
+        48,
+        48
+      ],
+      "dimensions": [
+        498,
+        492
+      ],
+      "logical": [
+        498,
+        492
+      ],
+      "physical": [
+        498,
+        492
+      ],
+      "role": "collage front photo",
+      "representation": "original-export",
+      "scale": 1,
+      "fit": "object-fit: cover; centered inside 48x48 slot; source image is unmodified",
+      "id": "entry-256ee",
+      "path": "rubles/assets/entry/256ee.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 315038,
+      "sha256": "f4b2bf050fc1d49b41b2e1b274755eec09339375888b32412a2af954e82bade6",
+      "sourceNodes": [
+        "141:51917"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "141:51917"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/66aba.png",
+      "nodeId": "I141:52234;7598:605074;75792:18313;75792:18304;4175:15123",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        48,
+        48
+      ],
+      "logical": [
+        48,
+        48
+      ],
+      "physical": [
+        48,
+        48
+      ],
+      "role": "profile avatar",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-66aba",
+      "path": "rubles/assets/entry/66aba.png",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 5399,
+      "sha256": "d628cc411d1dd92af2333ac30a16323c15e2acb1e8ed57d1df76c8c557199ee5",
+      "sourceNodes": [
+        "I141:52234;7598:605074;75792:18313;75792:18304;4175:15123"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52234;7598:605074;75792:18313;75792:18304;4175:15123"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/fad7b.svg",
+      "nodeId": "I141:52223;249:91120",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "sale icon",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-fad7b",
+      "path": "rubles/assets/entry/fad7b.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 2545,
+      "sha256": "2636e26b10f738755d351d3c339c4303e15f8a83a72fe8b3f10b0b61a180829a",
+      "sourceNodes": [
+        "I141:52223;249:91120"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52223;249:91120"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/96c18.svg",
+      "nodeId": "I141:52225;847:76354",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "bundle icon",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-96c18",
+      "path": "rubles/assets/entry/96c18.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 3558,
+      "sha256": "37f70cea9ae6221ca64699d7e8ecc0a3ddd3d88319b8fe589dd212d4df1365d1",
+      "sourceNodes": [
+        "I141:52225;847:76354"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52225;847:76354"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/6e1df.svg",
+      "nodeId": "I141:52233;61:17824;33457:20516",
+      "slot": [
+        375,
+        40
+      ],
+      "dimensions": [
+        375,
+        40
+      ],
+      "logical": [
+        375,
+        40
+      ],
+      "physical": [
+        375,
+        40
+      ],
+      "role": "status background",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-6e1df",
+      "path": "rubles/assets/entry/6e1df.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 821,
+      "sha256": "18c45baf032d391c267a24ec4d0b3d7b675e31ea27c8e4a877936d1081131d6c",
+      "sourceNodes": [
+        "I141:52233;61:17824;33457:20516"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52233;61:17824;33457:20516"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/f11f2.svg",
+      "nodeId": "I141:52233;61:17824;33457:20518",
+      "slot": [
+        325.83,
+        12
+      ],
+      "dimensions": [
+        325.83,
+        12
+      ],
+      "logical": [
+        325.83,
+        12
+      ],
+      "physical": [
+        325.83,
+        12
+      ],
+      "role": "status icons",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-f11f2",
+      "path": "rubles/assets/entry/f11f2.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 4603,
+      "sha256": "c058050ac8d4afa25aa0073b5bb040ff1e998771b5d2baa24ece362a8daa0a09",
+      "sourceNodes": [
+        "I141:52233;61:17824;33457:20518"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52233;61:17824;33457:20518"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/ce4ec.svg",
+      "nodeId": "I141:52233;61:17826;61:17862",
+      "slot": [
+        24,
+        24
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "logical": [
+        24,
+        24
+      ],
+      "physical": [
+        24,
+        24
+      ],
+      "role": "header back icon",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-ce4ec",
+      "path": "rubles/assets/entry/ce4ec.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 361,
+      "sha256": "0bb9d3c78c2af5341a7e49fa58e5663fdd4641462fff35289889428843689b40",
+      "sourceNodes": [
+        "I141:52233;61:17826;61:17862"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52233;61:17826;61:17862"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "file": "assets/entry/4f6ef.svg",
+      "nodeId": "I141:52234;7598:605186",
+      "slot": [
+        375,
+        36
+      ],
+      "dimensions": [
+        375,
+        36
+      ],
+      "logical": [
+        375,
+        36
+      ],
+      "physical": [
+        375,
+        36
+      ],
+      "role": "home indicator",
+      "representation": "original-export",
+      "scale": 1,
+      "id": "entry-4f6ef",
+      "path": "rubles/assets/entry/4f6ef.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 298,
+      "sha256": "373798382781c6aafa84576200519301fbf637eda6dda371d9e28a06b9b7ac29",
+      "sourceNodes": [
+        "I141:52234;7598:605186"
+      ],
+      "source": {
+        "fileKey": "CymBugfH4yExnxXn14xaRv",
+        "nodeId": "I141:52234;7598:605186"
+      },
+      "designContext": "141:52212"
+    },
+    {
+      "id": "86592",
+      "file": "assets/current/86592.svg",
+      "path": "rubles/assets/current/86592.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 624,
+      "sha256": "6e6f7c99821e26d9ecd39706f216fc93e9691a8bffcdce875a5960118e6dd9b0",
+      "logical": [
+        14,
+        16
+      ],
+      "physical": [
+        14,
+        16
+      ],
+      "dimensions": [
+        14,
+        16
+      ],
+      "scale": 1,
+      "role": "original item edit icon",
+      "sourceNodes": [
+        "3544:55840"
+      ],
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3544:55840"
+      },
+      "designContext": "3542:50077"
+    },
+    {
+      "id": "38777",
+      "file": "assets/current/38777.svg",
+      "path": "rubles/assets/current/38777.svg",
+      "kind": "image",
+      "used": true,
+      "review": "agent-checked",
+      "sizeBytes": 411,
+      "sha256": "a15e32fbce9feec779c407e2ee274b38dc49f65e595e487baeb9958ede3f7b47",
+      "logical": [
+        10,
+        16
+      ],
+      "physical": [
+        10,
+        16
+      ],
+      "dimensions": [
+        10,
+        16
+      ],
+      "scale": 1,
+      "role": "original small clear icon",
+      "sourceNodes": [
+        "3544:59146"
+      ],
+      "source": {
+        "fileKey": "OaolVHaabrE8Nv9upVA0wD",
+        "nodeId": "3544:59146"
+      },
+      "designContext": "3542:50077"
+    }
+  ],
+  "regions": [
+    {
+      "id": "catalog",
+      "canvas": [
+        375,
+        1404
+      ],
+      "rect": [
+        16,
+        0,
+        343,
+        1165
+      ],
+      "role": "DOM product list"
+    },
+    {
+      "id": "editor",
+      "canvas": [
+        375,
+        812
+      ],
+      "rect": [
+        4,
+        334,
+        367,
+        107
+      ],
+      "role": "DOM field and slider"
+    }
+  ]
+}

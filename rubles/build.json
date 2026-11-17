@@ -1,0 +1,11 @@
+{
+  "versions": {
+    "entry-screen.css": "06f0b86f0499",
+    "entry-screen.js": "95e7a92a7f5c",
+    "style.css": "71c44beb8731",
+    "discount-model.js": "f939c2743eb1",
+    "catalog.js": "3b96c60da3fb",
+    "app.js": "92bca56a51d9"
+  },
+  "revision": "cb73160e4b2b79e358e18c5ddea0a00c8d8f49300aa60499f7a34185f43dc1d8"
+}
