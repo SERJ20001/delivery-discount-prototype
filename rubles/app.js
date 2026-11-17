@@ -7,10 +7,12 @@ const money = value => `${new Intl.NumberFormat('ru-RU').format(value)} ₽`;
 const word = count => count % 10 === 1 && count % 100 !== 11 ? 'товар' : count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 12 || count % 100 > 14) ? 'товара' : 'товаров';
 const $ = selector => document.querySelector(selector);
 const app = $('#app');
+const amountMeasure = document.createElement('canvas').getContext('2d');
 const visibleItems = () => inventory.filter(item => state.tab === 'eligible' ? !state.applied.has(item.id) : state.applied.has(item.id));
 const chosenItems = () => visibleItems().filter(item => state.selected.has(item.id));
 const groupItems = index => visibleItems().filter(item => categories[index].items.includes(item) || (index === 0 && item === previousItem));
 let toastTimer;
+let toastRun = 0;
 let editorTrigger;
 let infoTrigger;
 
@@ -59,7 +61,9 @@ function presetButtons(item, selectedAmount, attribute) {
   return singlePresets(item).map((amount, index) => `<button class="chip ${index === 0 ? 'ai-chip' : ''} ${amount === selectedAmount ? 'active' : ''}" ${attribute}="${amount}" aria-pressed="${amount === selectedAmount}">${index === 0 ? `<img src="${asset('c8762.svg')}" alt="">` : ''}${money(amount)}</button>`).join('');
 }
 
-function render() {
+function render(animate = true) {
+  const positions = animate ? PrototypeMotion.snapshot() : new Map();
+  const selection = animate ? PrototypeMotion.captureSelection(chosenItems().length > 0) : null;
   const eligibleCount = inventory.length - state.applied.size;
   if (!eligibleCount) state.tab = 'discounted';
   const chosen = chosenItems();
@@ -101,6 +105,8 @@ function render() {
   $('#apply').classList.toggle('secondary', removing);
   $('#apply').disabled = chosen.length === 0;
   renderCategoryNavigation();
+  PrototypeMotion.layout(positions);
+  if (selection) PrototypeMotion.selection(selection);
 }
 
 function renderCategoryNavigation() {
@@ -122,7 +128,7 @@ function updateCategoryNavigation() {
     const changed = button.classList.contains('active') !== selected;
     button.classList.toggle('active', selected);
     button.setAttribute('aria-current', String(selected));
-    if (selected && changed) button.parentElement.scrollTo({ left: button.offsetLeft - 68 });
+    if (selected && changed) button.parentElement.scrollTo({ left: button.offsetLeft - 68, behavior: PrototypeMotion.scrollBehavior });
   });
 }
 function prepareSelection() {
@@ -137,18 +143,24 @@ function prepareSelection() {
 function openEditor(itemId, custom = false) {
   const item = inventory.find(item => item.id === itemId);
   if (!item) return;
+  PrototypeMotion.clearGhosts();
+  PrototypeMotion.cancel($('#editor'));
+  $('#scroll').scrollTo({ top: $('#scroll').scrollTop, behavior: 'auto' });
+  const origin = $(`[data-id="${item.id}"]`).getBoundingClientRect();
+  const positions = PrototypeMotion.snapshot();
   editorTrigger = document.activeElement;
   const amount = preview(item)?.amount ?? rangeAmount(item).amount;
   state.editor = { item, mode: custom || !singlePresets(item).includes(amount) ? 'custom' : 'preset', draft: String(amount), scrollTop: $('#scroll').scrollTop };
-  clearTimeout(toastTimer);
-  $('#toast').hidden = true;
+  hideToast();
   setEditorProductVisibility();
+  PrototypeMotion.layout(positions);
   $('#screen').inert = true;
   $('#editor').hidden = false;
   $('#editor-options').innerHTML = `<div class="editor-presets" id="editor-presets"></div><label class="custom-input"><input id="amount" type="text" inputmode="none" autocomplete="off" maxlength="6" aria-label="Своя сумма скидки в рублях"><span id="amount-suffix">₽</span></label><div id="limit-tooltip" class="limit-tooltip" role="tooltip" aria-live="polite" hidden></div>`;
   updateEditor();
   if (custom) { $('#amount').focus({ preventScroll: true }); $('#amount').select(); }
   else $('#done').focus({ preventScroll: true });
+  PrototypeMotion.openEditor(origin);
 }
 function updateEditor() {
   const { item, draft, mode } = state.editor;
@@ -158,6 +170,8 @@ function updateEditor() {
   $('#editor-presets').innerHTML = presetButtons(item, mode === 'preset' ? result?.amount : null, 'data-editor-amount');
   const input = $('#amount');
   input.value = mode === 'custom' ? draft : '';
+  amountMeasure.font = getComputedStyle(input).font;
+  input.style.width = input.value ? `${Math.ceil(amountMeasure.measureText(input.value).width) + 1}px` : '100%';
   $('.custom-input').style.setProperty('--digits', draft.length);
   input.placeholder = mode === 'custom' ? `от ${bounds.minimum} ₽` : 'Своя';
   $('.custom-input').classList.toggle('active', mode === 'custom');
@@ -186,13 +200,22 @@ function setEditorProductVisibility() {
     product.hidden = product.dataset.id === state.editor?.item.id;
   });
 }
-function closeEditor() {
-  const scrollTop = state.editor.scrollTop;
+function closeEditor(returnToList = true) {
+  if (!state.editor) return;
+  const { item, scrollTop } = state.editor;
+  const positions = PrototypeMotion.snapshot();
+  const row = $(`[data-id="${item.id}"]`);
+  const ghost = PrototypeMotion.clone($('#editor'), () => { if (row) row.style.visibility = ''; });
+  PrototypeMotion.cancel($('#editor'));
   state.editor = null;
-  setEditorProductVisibility();
+  if (returnToList) setEditorProductVisibility();
   $('#scroll').scrollTop = scrollTop;
   $('#editor').hidden = true;
   $('#screen').inert = false;
+  const target = returnToList && row ? row.getBoundingClientRect() : null;
+  if (target && ghost) row.style.visibility = 'hidden';
+  if (returnToList) PrototypeMotion.layout(positions);
+  PrototypeMotion.closeEditor(ghost, target);
   (editorTrigger?.isConnected ? editorTrigger : $('#select-all')).focus({ preventScroll: true });
 }
 function commitEditor() {
@@ -204,16 +227,28 @@ function commitEditor() {
   state.selected.delete(item.id);
   state.previews.delete(item.id);
   prepareSelection();
-  closeEditor();
+  closeEditor(false);
   render();
   $('#select-all').focus({ preventScroll: true });
   notify(updating ? 'Изменили скидку на товар' : 'Подключили скидку на товар');
 }
 function notify(message) {
+  hideToast();
+  const run = toastRun;
+  const toast = $('#toast');
+  toast.textContent = message;
+  toast.hidden = false;
+  PrototypeMotion.animate(toast, [{ opacity: 0, transform: 'translateY(-8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 220 });
+  toastTimer = setTimeout(async () => {
+    await PrototypeMotion.animate(toast, [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-6px)' }], { duration: 180, persist: true });
+    if (run === toastRun) hideToast();
+  }, 2500);
+}
+function hideToast() {
+  toastRun++;
   clearTimeout(toastTimer);
-  $('#toast').textContent = message;
-  $('#toast').hidden = false;
-  toastTimer = setTimeout(() => { $('#toast').hidden = true; }, 2500);
+  PrototypeMotion.cancel($('#toast'));
+  $('#toast').hidden = true;
 }
 
 $('#catalog').addEventListener('click', event => {
@@ -221,6 +256,7 @@ $('#catalog').addEventListener('click', event => {
   if (edit) return openEditor(edit.dataset.edit);
   const product = event.target.closest('[data-select]');
   const category = event.target.closest('[data-category]');
+  PrototypeMotion.clearGhosts();
   if (product) state.selected.has(product.dataset.select) ? state.selected.delete(product.dataset.select) : state.selected.add(product.dataset.select);
   else if (category) {
     const items = groupItems(Number(category.dataset.category));
@@ -229,8 +265,10 @@ $('#catalog').addEventListener('click', event => {
   }
   prepareSelection();
   render();
+  if (product && state.selected.has(product.dataset.select)) PrototypeMotion.keepInView(product.dataset.select);
 });
 $('#select-all').addEventListener('click', () => {
+  PrototypeMotion.clearGhosts();
   const items = visibleItems();
   state.selected = new Set(chosenItems().length === items.length ? [] : items.map(item => item.id));
   prepareSelection();
@@ -263,13 +301,13 @@ $('#editor-options').addEventListener('focusin', event => {
 });
 $('#editor-options').addEventListener('input', event => { if (event.target.id === 'amount') setDraft(event.target.value, event.target.selectionStart); });
 $('#done').addEventListener('click', commitEditor);
-$('#cancel-edit').addEventListener('click', closeEditor);
-$('#cancel-area').addEventListener('click', closeEditor);
+$('#cancel-edit').addEventListener('click', () => closeEditor());
+$('#cancel-area').addEventListener('click', () => closeEditor());
 $('#remove-discount').addEventListener('click', () => {
   state.applied.delete(state.editor.item.id);
   state.selected.delete(state.editor.item.id);
   state.previews.delete(state.editor.item.id);
-  closeEditor(); render();
+  closeEditor(false); render();
   $('#select-all').focus({ preventScroll: true });
   notify('Удалили скидку на товар');
 });
@@ -284,17 +322,25 @@ $('#apply').addEventListener('click', () => {
   notify(`${removing ? 'Удалили' : 'Применили'} скидку для ${chosen.length} ${chosen.length % 10 === 1 && chosen.length % 100 !== 11 ? 'товара' : 'товаров'}`);
 });
 $('#ai-caption').addEventListener('click', () => {
+  PrototypeMotion.clearGhosts();
+  PrototypeMotion.cancel($('#info'));
   infoTrigger = $('#ai-caption'); $('#info').hidden = false; $('#screen').inert = true; $('#close-info').focus({ preventScroll: true });
+  PrototypeMotion.openSheet($('#info'));
 });
 function closeInfo() {
+  const ghost = PrototypeMotion.clone($('#info'));
+  PrototypeMotion.cancel($('#info'));
   $('#info').hidden = true; $('#screen').inert = false; infoTrigger?.focus({ preventScroll: true });
+  PrototypeMotion.closeSheet(ghost);
 }
 $('#close-info').addEventListener('click', closeInfo);
 $('#understood').addEventListener('click', closeInfo);
 $('#info').addEventListener('click', event => { if (event.target === $('#info')) closeInfo(); });
 document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => {
+  PrototypeMotion.reset();
   state.tab = button.dataset.tab; state.selected.clear(); state.range = state.tab === 'eligible' ? 'recommended' : 'saved'; state.previews.clear();
-  $('#scroll').scrollTop = 0; render();
+  $('#scroll').scrollTop = 0; render(false);
+  PrototypeMotion.animate($('#catalog'), [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 220 });
 }));
 document.querySelectorAll('.back').forEach(button => button.addEventListener('click', EntryScreen.back));
 $('#scroll').addEventListener('scroll', updateCategoryNavigation, { passive: true });
@@ -302,7 +348,7 @@ $('#category-nav').addEventListener('click', event => {
   const button = event.target.closest('[data-jump]');
   if (!button) return;
   const group = $(`[data-group="${button.dataset.jump}"]`);
-  $('#scroll').scrollTo({ top: Math.max(308, group.offsetTop - 142), behavior: 'smooth' });
+  $('#scroll').scrollTo({ top: Math.max(308, group.offsetTop - 142), behavior: PrototypeMotion.scrollBehavior });
 });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && state.editor) { event.preventDefault(); closeEditor(); }
@@ -344,20 +390,23 @@ function resize() {
 }
 
 function enterDelivery() {
+  PrototypeMotion.reset();
   state.tab = 'eligible';
   state.selected.clear();
   state.range = 'recommended';
   state.previews.clear();
   $('#scroll').scrollTop = 0;
-  render();
+  render(false);
   $('#screen .back').focus({ preventScroll: true });
+  PrototypeMotion.animate($('#screen'), [{ opacity: 0, transform: 'translateX(14px)' }, { opacity: 1, transform: 'translateX(0)' }], { duration: 280 });
 }
 
 function leaveDelivery() {
   if (state.editor) closeEditor();
   if (!$('#info').hidden) closeInfo();
-  clearTimeout(toastTimer);
-  $('#toast').hidden = true;
+  hideToast();
+  PrototypeMotion.reset();
+  PrototypeMotion.animate($('#offers-screen'), [{ opacity: 0, transform: 'translateX(-10px)' }, { opacity: 1, transform: 'translateX(0)' }], { duration: 240 });
 }
 
 const prepared = new Map();
@@ -380,7 +429,7 @@ async function start() {
   $('#loading-copy').textContent = 'Загружаем прототип…';
   let timeout;
   try {
-    render();
+    render(false);
     const paths = new Set([...document.querySelectorAll('img')].map(image => image.getAttribute('src')));
     ['86592.svg', 'c8762.svg', 'a31ca.svg'].forEach(name => paths.add(asset(name)));
     paths.add('assets/checkbox-inactive.svg');

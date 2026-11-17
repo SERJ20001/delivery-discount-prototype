@@ -11,7 +11,7 @@ const entryScreen = await buildEntry(root, output);
 const versions = {};
 let html = await readFile(path.join(root, 'source/rubles.template.html'), 'utf8');
 html = html.replace('{{ENTRY_SCREEN}}', entryScreen);
-for (const file of ['entry-screen.css', 'entry-screen.js', 'style.css', 'discount-model.js', 'catalog.js', 'app.js']) {
+for (const file of ['entry-screen.css', 'entry-screen.js', 'style.css', 'discount-model.js', 'catalog.js', 'motion.js', 'app.js']) {
   versions[file] = createHash('sha256').update(await readFile(path.join(output, file))).digest('hex').slice(0, 12);
   html = html.replace(`"${file}"`, `"${file}?v=${versions[file]}"`);
 }
@@ -32,7 +32,7 @@ let runtime = await readFile(path.join(output, 'app.js'), 'utf8');
 runtime = runtime.replace('const asset = name => `assets/current/${name}`;', "const asset = name => bundledAssets[`assets/current/${name}`];");
 runtime = runtime.replaceAll("'assets/checkbox-inactive.svg'", JSON.stringify(bundledAssets['assets/checkbox-inactive.svg']));
 runtime = runtime.replace('`url("assets/avito-sans-text-${name}.woff2")`', '`url("${bundledAssets[`assets/avito-sans-text-${name}.woff2`]}")`');
-const scripts = [await readFile(path.join(output, 'entry-screen.js'), 'utf8'), await readFile(path.join(output, 'discount-model.js'), 'utf8'), await readFile(path.join(output, 'catalog.js'), 'utf8'), `const bundledAssets = ${JSON.stringify(bundledAssets)};\n${runtime}`];
+const scripts = [await readFile(path.join(output, 'entry-screen.js'), 'utf8'), await readFile(path.join(output, 'discount-model.js'), 'utf8'), await readFile(path.join(output, 'catalog.js'), 'utf8'), await readFile(path.join(output, 'motion.js'), 'utf8'), `const bundledAssets = ${JSON.stringify(bundledAssets)};\n${runtime}`];
 standalone = standalone.replace(/<script src="[^"]+" defer><\/script>\n/g, '');
 standalone = standalone.replace(/src="(assets\/[^"]+)"/g, (_, file) => `src="${bundledAssets[file]}"`);
 standalone = standalone.replace(/url\((['"]?)(?:\.\/)?(assets\/[^)'"]+)\1\)/g, (_, quote, file) => `url("${bundledAssets[file]}")`);

@@ -11,7 +11,7 @@
 .editor-product{margin:0 16px;display:flex;gap:12px;padding:10px;background:white;border-radius:20px;min-height:100px;flex:none}
 .editor-product .product-title{margin-top:2px}.editor-discount{display:inline-flex;align-items:center;border-radius:8px;padding:2px 11px 4px;height:22px;background:#f2f1f0;font-size:13px;line-height:16px;margin-top:6px;white-space:nowrap}
 .editor-panel{position:relative;background:white;border-radius:24px 24px 0 0;padding:12px;flex:none}.editor-options{position:relative;display:flex;gap:6px;margin-bottom:16px;height:36px}.editor-presets{display:flex;gap:6px;flex:1;min-width:0}.editor-presets .chip{padding:0 5px;font-size:13px;gap:3px;flex:1}.editor-presets .ai-chip{width:auto}
-.custom-input{display:flex;align-items:center;gap:3px;width:80px;height:36px;flex:none;border-radius:12px;background:#f2f1f0;padding:9px 10px 11px 14px;font-size:13px;line-height:16px;overflow:hidden}.custom-input.active{box-shadow:inset 0 0 0 1.5px #141414}.custom-input input{border:0;background:transparent;outline:0;padding:0;min-width:0;width:100%;font-size:13px;line-height:16px}.custom-input input::placeholder{color:#757575}
+.custom-input{display:flex;align-items:center;gap:3px;width:80px;height:36px;flex:none;border-radius:12px;background:#f2f1f0;padding:9px 10px 11px 14px;font-size:13px;line-height:16px;overflow:hidden}.custom-input.active{box-shadow:inset 0 0 0 1.5px #141414}.custom-input input{border:0;background:transparent;outline:0;padding:0;min-width:0;width:100%;flex:none;font-size:13px;line-height:16px}.custom-input input::placeholder{color:#757575}#amount-suffix{flex:none}
 .custom-input:has(#amount:not(:placeholder-shown)){width:clamp(80px,calc(var(--digits,2)*8px + 40px),112px)}.editor-panel .primary+.primary{margin-top:6px}
 .limit-tooltip{position:absolute;right:0;bottom:calc(100% + 8px);z-index:2;padding:10px 12px;border-radius:16px;background:#000;color:#fff;font-size:13px;line-height:16px;white-space:nowrap;box-shadow:0 4px 24px #0000001f,0 1px 3px #0000000d;pointer-events:none}
 .editor-presets .ai-chip.active,#options .ai-chip[data-amount].active{box-shadow:inset 0 0 0 2px #141414}
@@ -48,3 +48,11 @@ button,input{font:inherit;color:inherit}button{cursor:pointer;border:0;-webkit-t
 
 #app:has(#catalog-header:not([hidden])) .toast{top:154px}
 .editor-discount.placeholder{color:#757575}
+.motion-ghost{pointer-events:none!important}.editor.is-moving .editor-stack{overflow:visible}
+@media(prefers-reduced-motion:no-preference){
+  .primary,.chip,.count-pill,.discount-chip,.product-select,.back{transition:background-color 160ms ease,box-shadow 180ms ease,transform 160ms cubic-bezier(.22,.8,.25,1)}
+  .primary:active:not(:disabled),.chip:active:not(:disabled),.count-pill:active:not(:disabled){transform:scale(.98)}
+  .discount-chip:active,.product-select:active,.back:active{transform:scale(.985)}
+  .limit-tooltip:not([hidden]){animation:limit-reveal 160ms cubic-bezier(.22,.8,.25,1)}
+  @keyframes limit-reveal{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+}

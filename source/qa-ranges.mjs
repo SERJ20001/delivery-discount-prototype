@@ -14,7 +14,7 @@ const check = (name, value) => { assert.ok(value, name); checks.push(name); };
 const settle = page => page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 const browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 try {
-  const page = await browser.newPage({ viewport: { width: 375, height: 850 } });
+  const page = await browser.newPage({ viewport: { width: 375, height: 850 }, reducedMotion: 'reduce' });
   page.setDefaultTimeout(10000);
   page.on('pageerror', error => errors.push(error.message));
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
